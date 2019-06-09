@@ -5,7 +5,18 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+const authEvents = require('./auth/events.js')
+const trailerEvents = require('./trailers/events.js')
+const exampleEvents = require('./examples/events.js')
 
 $(() => {
-  // your JS code goes here
+  if ($(window).width() > 992) {
+    console.log('window width')
+    $('#navbarTogglerSearch').addClass('show')
+    $('#navbarTogglerSearchButton').addClass('d-none')
+  }
+
+  authEvents.addHandlers()
+  trailerEvents.addHandlers()
+  exampleEvents.addHandlers()
 })
