@@ -7,7 +7,7 @@
 // require('./example')
 const authEvents = require('./auth/events.js')
 const trailerEvents = require('./trailers/events.js')
-const exampleEvents = require('./examples/events.js')
+// const exampleEvents = require('./examples/events.js')
 
 $(() => {
   if ($(window).width() > 992) {
@@ -18,5 +18,5 @@ $(() => {
 
   authEvents.addHandlers()
   trailerEvents.addHandlers()
-  exampleEvents.addHandlers()
+  // exampleEvents.addHandlers()
 })
