@@ -58,7 +58,10 @@ const onSignIn = event => {
 
   // console.log('sign in pressed', formData)
   api.signIn(formData)
-    .then(ui.onSignInSuccess)
+    .then(responseData => {
+      store.user = responseData.user
+      ui.onSignInSuccess()
+    })
     .catch(ui.onSignInFailure)
 }
 
@@ -85,7 +88,12 @@ const onChangePassword = event => {
 }
 
 const addHandlers = () => {
-  $('h1').on('click', console.log('Hi from auth events'))
+  $('#switchToSignUp').on('click', onSwitchSignInUp)
+  $('#switchToSignIn').on('click', onSwitchSignInUp)
+  $('#sign-in-form').on('submit', onSignIn)
+  $('#sign-up-form').on('submit', onSignUp)
+  $('#change-password-form').on('submit', onChangePassword)
+  $('#sign-out-action').on('click', onSignOut)
 }
 
 module.exports = {

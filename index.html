@@ -21,60 +21,116 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarTogglerSignedOut">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="#">List your trailer</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Learn more</a>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</a>
+                <div class="dropdown-menu dropdown-menu-lg-right">
+                  <div id="sign-in-form-container">
+                    <form class="px-4 py-3" id="sign-in-form">
+                      <div class="form-group">
+                        <label for="emailSignIn">Email address</label>
+                        <input name="credentials[email]" type="email" class="form-control" id="emailSignIn" placeholder="email@example.com">
+                      </div>
+                      <small id="emailHelp2" class="form-text text-muted">
+                        We'll never share your email with anyone else.
+                      </small>
+                      <div class="form-group">
+                        <label for="passwordSignIn">Password</label>
+                        <input name="credentials[password]" type="password" class="form-control" id="passwordSignIn" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign in</button>
+                      <hr class="my-2">
+                      <span class="sign-switch" id="switchToSignUp">
+                        New around here?<span class="switchSignInUp ml-2">Sign up</span>
+                      </span>
+                    </form>
+                  </div>
+                  <div class="d-none" id="sign-up-form-container">
+                    <form class="px-4 py-3" id="sign-up-form">
+                      <div class="form-group">
+                        <label for="emailSignUp">Email address</label>
+                        <input name="credentials[email]" type="email" class="form-control" id="emailSignUp" placeholder="email@example.com">
+                      </div>
+                      <small id="emailHelp1" class="form-text text-muted">
+                        We'll never share your email with anyone else.
+                      </small>
+                      <div class="form-group">
+                        <label for="passwordSignUp">Password</label>
+                        <input name="credentials[password]" type="password" class="form-control" id="passwordSignUp" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="passwordConfirmationSignUp">Confirm Password</label>
+                        <input name="credentials[password_confirmation]" type="password" class="form-control" id="passwordConfirmationSignUp" placeholder="Confirm password">
+                      </div>
+                      <div class="form-group">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign up</button>
+                      <hr class="my-2">
+                      <span class="sign-switch" id="switchToSignIn">
+                        Remember your password now?<span class="switchSignInUp ml-2 mr-2">Sign in</span>
+                      </span>
+                    </form>
+                  </div>
+                </div>
+              </li>
             </ul>
-            <div class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</a>
-              <div class="dropdown-menu dropdown-menu-lg-right">
-                <form class="px-4 py-3">
-                  <div class="form-group">
-                    <label for="exampleDropdownFormEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleDropdownFormPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">New around here? Sign up</a>
-              </div>
-            </div>
+
           </div>
         </nav>
         <nav class="navbar navbar-expand-lg navbar-light bg-light d-none" id="sign-in-nav">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">Trailer Share</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedIn" aria-controls="navbarTogglerSignedIn" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarTogglerSignedIn">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">List your trailer</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Change password</a>
+                <div class="dropdown-menu dropdown-menu-lg-right" id="change-password-form-container">
+
+                    <form class="px-4 py-3" id="change-password-form">
+                      <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input name="passwords[old]" type="password" class="form-control" id="current-password" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input name="passwords[new]" type="password" class="form-control" id="new-password" placeholder="Confirm password">
+                      </div>
+                      <div class="form-group">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Change password</button>
+                    </form>
+                    <hr class="my-2">
+                    <span class="sign-switch">
+                      Pick a good password, you can do it!
+                    </span>
+                    <hr class="my-2">
+                    <span class="sign-switch">
+                      Close
+                    </span>
+
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <span class="nav-link"id="sign-out-action">Sign Out</span>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
           </div>
         </nav>
+
       </header>
 
       <main>
@@ -84,7 +140,7 @@
           <div class="jumbotron d-flex flex-column align-items-center">
             <h1 class="display-3">The Best Trailers</h1>
             <p class="lead">Book specialty trailers from local hosts</p>
-            <button class="btn btn-primary btn-lg">Learn more</button>
+            <button class="btn btn-outline-primary btn-lg">Learn more</button>
           </div>
           <div class="d-flex flex-column align-items-center">
             <div class="container">
@@ -98,14 +154,23 @@
             </div>
             <div class="container">
               <div class="media">
-                <i class="align-self-start mr-3 far fa-thumbs-up fa-3x" alt="..."></i>
+                <i class="align-self-start mr-3 fas fa-headset fa-3x" alt="..."></i>
                 <div class="media-body">
                   <h5 class="mt-0">Free cancellation</h5>
                   <p>Cancel for free up to 24 hours before your trip starts. Because life happens and it helps to be flexible when it does.</p>
                 </div>
               </div>
             </div>
-            <button class="btn btn-primary align-self-center">Book now</button>
+            <div class="container">
+              <div class="media">
+                <i class="align-self-start mr-3 far fa-thumbs-up fa-3x" alt="..."></i>
+                <div class="media-body">
+                  <h5 class="mt-0">24/7 customer support</h5>
+                  <p>Rest easy knowing that everyone in the Trailer Share community is screened, and 24/7 customer support and roadside assistance are just a click away.</p>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg align-self-center">Book now</button>
           </div>
           <div class="container my-4">
             <div class="row">
@@ -115,7 +180,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-outline-info">Go somewhere</a>
                   </div>
                 </div>
               </div>
@@ -125,7 +190,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-outline-info">Go somewhere</a>
                   </div>
                 </div>
               </div>
@@ -135,7 +200,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-outline-info">Go somewhere</a>
                   </div>
                 </div>
               </div>
@@ -145,17 +210,17 @@
                   <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-outline-info">Go somewhere</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="jumbotron d-flex flex-column">
+          <div class="jumbotron d-flex flex-column mb-0">
             <h1 class="display-4">The trailer that pays for itself</h1>
             <p class="lead">Make a dent in your monthly trailer payments — on average, Trailer Share hosts can cover their payments by sharing their trailers just 3 days per month.</p>
             <hr class="my-4">
-            <button class="btn btn-secondary align-self-center">List your trailer</button>
+            <button class="btn btn-outline-dark align-self-center">List your trailer</button>
           </div>
 
         </section>
@@ -164,15 +229,20 @@
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-4">
               <nav class="navbar navbar-light bg-light" id="signed-in-nav-search">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">Search</a>
                 <button id="navbarTogglerSearchButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSearch" aria-controls="navbarTogglerSearch" aria-expanded="false" aria-label="Toggle navigation">
                   <i class="fas fa-search"></i>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarTogglerSearch">
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                      <select class="custom-select custom-select-lg mb-3">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Link</a>
