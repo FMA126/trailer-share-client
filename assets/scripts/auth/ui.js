@@ -46,12 +46,12 @@ const onShowAboutSuccess = () => {
 const onSignUpSuccess = responseData => {
   console.log('successfully signed up', responseData)
   store.signUpPassed = true
+
   $(window).scrollTop(0)
   $('form').trigger('reset')
   $('#emailHelp1').removeClass('text-danger')
   $('#emailHelp1').addClass('text-muted')
   $('#emailHelp1').text("We'll never share your email with anyone else.")
-  // $('#message').text('Signed up successfully! Please sign in')
 }
 
 const onSignUpFailure = responseData => {
@@ -69,24 +69,19 @@ const onSignInSuccess = responseData => {
   console.log('successfully signed in', responseData)
   $('form').trigger('reset')
   $(window).scrollTop(0)
-  // $('#game-board-single').tooltip('enable')
-  // $('#single-new').tooltip('enable')
-  // $('#multi-new').tooltip('enable')
-  // $('#join-new').tooltip('enable')
-  // $('#message').text('Welcome! Choose A Game To Start')
-  $('#navbarTogglerSignedOut').collapse('hide')
-  $('#emailHelp2').removeClass('text-danger')
-  $('#emailHelp2').addClass('text-muted')
-  $('#emailHelp2').text("We'll never share your email with anyone else.")
-  $('#sign-out-nav').addClass('d-none')
-  $('#sign-in-nav').removeClass('d-none')
-  $('#sign-out-landing-page').addClass('d-none')
-  $('#signed-in-flight-deck-page').removeClass('d-none')
-  // $('form').trigger('reset')
-  // $('.dots').attr('data-toggle', 'modal')
-  // $('.dots').addClass('pointer')
-  // $('#landing-auth').addClass('hide')
-  // $('#game-master').removeClass('hide')
+
+  if (!store.signInDev) {
+    $('#navbarTogglerSignedOut').collapse('hide')
+    $('#emailHelp2').removeClass('text-danger')
+    $('#emailHelp2').addClass('text-muted')
+    $('#emailHelp2').text("We'll never share your email with anyone else.")
+    $('#sign-out-nav').addClass('d-none')
+    $('#sign-in-nav').removeClass('d-none')
+    $('#sign-out-landing-page').addClass('d-none')
+    $('#signed-in-flight-deck-page').removeClass('d-none')
+  } else {
+    $('#dev-sign-in').addClass('text-success')
+  }
 }
 
 const onSignInFailure = responseData => {

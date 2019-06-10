@@ -4,6 +4,7 @@ const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
+const config = require('../config')
 
 const onAutoSignIn = (email, password) => {
   const reqObj = {
@@ -50,14 +51,32 @@ const onShowAbout = () => {
   ui.onShowAboutSuccess()
 }
 
-const onSignIn = event => {
+const onSignIn = (event, dev) => {
   event.preventDefault()
 
   const form = event.target
   const formData = getFormFields(form)
 
   // console.log('sign in pressed', formData)
+
   api.signIn(formData)
+    .then(responseData => {
+      store.user = responseData.user
+      ui.onSignInSuccess()
+    })
+    .catch(ui.onSignInFailure)
+}
+
+const devSignIn = event => {
+  event.preventDefault()
+  store.signInDev = true
+  const reqData = {
+    'credentials': {
+      'email': 'a@b',
+      'password': '1'
+    }
+  }
+  api.signIn(reqData)
     .then(responseData => {
       store.user = responseData.user
       ui.onSignInSuccess()
@@ -94,6 +113,8 @@ const addHandlers = () => {
   $('#sign-up-form').on('submit', onSignUp)
   $('#change-password-form').on('submit', onChangePassword)
   $('#sign-out-action').on('click', onSignOut)
+  // dev sign in
+  $('#dev-sign-in').on('click', devSignIn)
 }
 
 module.exports = {
@@ -106,5 +127,6 @@ module.exports = {
   onSignIn,
   onSignOut,
   onChangePassword,
-  addHandlers
+  addHandlers,
+  devSignIn
 }
