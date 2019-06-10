@@ -28,6 +28,21 @@ footer {
 
 }
 
+// .flight-deck-accordion {
+//   height: 50vh;
+// }
+
+.flight-deck-m-t-l-c {
+  height: 80vh;
+  overflow-y: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+.flight-deck-m-t-l-c::-webkit-scrollbar {
+  width: 0 !important
+}
+
 .hide {
   display: none;
 }
@@ -53,11 +68,26 @@ footer {
   color: #007bff;
 }
 
-.switchSignInUp:hover {
-  cursor: pointer;
+.user-trailer-list {
+  height: 50vh;
+  overflow-y: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
 }
+
+// .switchSignInUp:hover {
+//   cursor: pointer;
+// }
+
 .trailer-list-card > img {
   height: 15rem;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.trailer-list-media > img {
+  height: 2rem;
+  height: 2rem;
   object-fit: cover;
   overflow: hidden;
 }

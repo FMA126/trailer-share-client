@@ -11,7 +11,6 @@ const trailerEvents = require('./trailers/events.js')
 
 $(() => {
   if ($(window).width() > 992) {
-    console.log('window width')
     $('#navbarTogglerSearch').addClass('show')
     $('#navbarTogglerSearchButton').addClass('d-none')
   }
