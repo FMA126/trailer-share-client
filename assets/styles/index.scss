@@ -56,3 +56,8 @@ footer {
 .switchSignInUp:hover {
   cursor: pointer;
 }
+.trailer-list-card > img {
+  height: 15rem;
+  object-fit: cover;
+  overflow: hidden;
+}
