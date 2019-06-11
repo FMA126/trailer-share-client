@@ -65,7 +65,6 @@ const onSignUpFailure = responseData => {
 const onSignInSuccess = responseData => {
   $('form').trigger('reset')
   $(window).scrollTop(0)
-
   if (!store.signInDev) {
     $('#navbarTogglerSignedOut').collapse('hide')
     $('#emailHelp2').removeClass('text-danger')

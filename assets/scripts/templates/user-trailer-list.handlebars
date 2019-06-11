@@ -3,36 +3,61 @@
 <li class="media trailer-list-media mb-4" id="update-from-linkers" data-id="{{trailer.id}}">
   <img src="public/trailers/showcase-images/{{trailer.picture}}trailer.jpg" class="mr-3" alt="picture of trailer">
   <div class="media-body">
-    <h5 class="mt-0 mb-1">{{trailer.make}} | {{trailer.model}}</h5>
+    <h5 class="mt-0 mb-1 text-center font-weight-bold">{{trailer.make}}</h5>
+    <p class="my-0 text-center">{{trailer.model}}</p>
+    <hr class="mt-0">
     <div class="bubble-trailer-1">
       <div class="row mb-2">
-        <div class="col-6">
-          Year: {{trailer.year}}
+        <div class="col-6 text-center">
+          Year:
         </div>
-        <div class="col-6">
-          Type: {{trailer.trailer_type}}
+        <div class="col-6 text-center">
+          {{trailer.year}}
         </div>
-        <div class="col-6">
-          Hitch: {{trailer.hitch_type}}
+        <div class="col-6 text-center">
+          Type:
         </div>
-        <div class="col-6">
-          Length: {{trailer.length}} ft
+        <div class="col-6 text-center">
+          {{trailer.trailer_type}}
         </div>
-        <div class="col-6">
-          GVWR: {{trailer.gvwr}} lbs
+        <div class="col-6 text-center">
+          Hitch:
         </div>
-        <div class="col-6">
-          Axels: {{trailer.axels}}
+        <div class="col-6 text-center">
+          {{trailer.hitch_type}}
         </div>
-        <div class="col-6">
-          Price: ${{trailer.price}} / day
+        <div class="col-6 text-center">
+          Length:
+        </div>
+        <div class="col-6 text-center">
+          {{trailer.length}} ft
+        </div>
+        <div class="col-6 text-center">
+          GVWR:
+        </div>
+        <div class="col-6 text-center">
+          {{trailer.gvwr}} lbs
+        </div>
+        <div class="col-6 text-center">
+          Axels:
+        </div>
+        <div class="col-6 text-center">
+          {{trailer.axels}}
+        </div>
+        <div class="col-6 text-center">
+          Price:
+        </div>
+        <div class="col-6 text-center">
+          ${{trailer.price}} / day
         </div>
       </div>
+      <hr class="mt-0">
     </div>
-    <div class="d-flex justify-content-center bubble-trailer-2">
-      <button data-id="{{trailer.id}}" class="btn btn-outline-info btn-sm col-5 update-button ">Update</button>
-      <button data-id="{{trailer.id}}" class="btn btn-outline-danger btn-sm col-5 del-button">Delete</button>
+    <div class="d-flex flex-column align-items-center bubble-trailer-2">
+      <button data-id="{{trailer.id}}" class="btn btn-outline-info btn-sm col-8 update-button mb-2">Update</button>
+      <button data-id="{{trailer.id}}" class="btn btn-outline-danger btn-sm col-8 del-button mb-4">Delete</button>
     </div>
+    <hr class="bg-dark mt-0">
   </div>
 </li>
 

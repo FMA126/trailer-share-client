@@ -13,7 +13,6 @@ const onshowTrailerListOnIndexSuccess = (responseData) => {
   $('#landing-trailer-list').html(landingTrailerList)
   $('#flight-deck-main-trailer-list').html(flighDeckTrailerList)
   $('#user-trailer-list-body').html(isUserHasTrailer ? userTrailerList : "You don't have any trailers listed")
-  console.log(userTrailerList)
 }
 const onshowTrailerListOnIndexFailure = (responseData) => {
   // console.log(responseData)

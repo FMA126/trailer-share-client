@@ -8,6 +8,7 @@
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -378,7 +379,7 @@
 
           </div>
         </nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light d-none" id="sign-in-nav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sign-in-nav d-none" id="sign-in-nav">
           <a class="navbar-brand" href="#">Trailer Share</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedIn" aria-controls="navbarTogglerSignedIn" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -481,7 +482,7 @@
         <!-- Signed-in Landing Page -->
         <section class="container-fluid d-none" id="signed-in-flight-deck-page">
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-4 pl-0">
+            <div class="col-sm-12 col-md-12 col-lg-3 px-sm-1 px-lg-0">
               <nav class="navbar navbar-light bg-light search-main-trailer-list" id="signed-in-nav-search">
                 <a class="navbar-brand " href="#">Search</a>
                 <button id="navbarTogglerSearchButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSearch" aria-controls="navbarTogglerSearch" aria-expanded="false" aria-label="Toggle navigation">
@@ -512,17 +513,24 @@
                 </div>
               </nav>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4 flight-deck-m-t-l-c" id="flight-deck-main-trailer-list-container">
+            <!-- <div class="col-sm-12 col-md-12 col-lg-4 flight-deck-m-t-l-c" id="flight-deck-main-trailer-list-container">
               <ul class="list-unstyled" id="flight-deck-main-trailer-list">
 
               </ul>
+            </div> -->
+            <!-- flight deck trailer list -->
+            <div class="col-sm-12 col-md-12 col-lg-5 px-sm-1 px-lg-0 flight-deck-m-t-l-c">
+              <div class="row" id="flight-deck-main-trailer-list">
+
+              </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4 pr-0">
+
+            <div class="col-sm-12 col-md-12 col-lg-4 px-sm-1 px-lg-0">
               <div class="accordion" id="accordionExample">
                 <div class="card">
                   <div class="card-header" id="user-trailer-list-heading">
                     <h2 class="mb-0">
-                      <button id="user-trailer-button" class="btn btn-link btn-lg text-decoration-none" type="button" data-toggle="collapse" data-target="#user-trailer-list" aria-expanded="false" aria-controls="user-trailer-list">
+                      <button id="user-trailer-button" class="btn btn-link btn-lg text-decoration-none text-dark accordion-label" type="button" data-toggle="collapse" data-target="#user-trailer-list" aria-expanded="false" aria-controls="user-trailer-list">
                         Your Trailers
                       </button>
                     </h2>
@@ -541,15 +549,15 @@
                 <div class="card">
                   <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
-                      <button class="btn btn-link btn-lg collapsed text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <button class="btn btn-link btn-lg collapsed text-decoration-none text-dark accordion-label" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         Reservations
                       </button>
                     </h2>
                   </div>
-                  <div id="collapseTwo" class="collapse user-trailer-list" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div id="collapseTwo" class="collapse show user-trailer-list" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
                       <div>
-
+                        You have no reservations.
                       </div>
                     </div>
                   </div>
@@ -557,12 +565,12 @@
                 <div class="card">
                   <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
-                      <button class="btn btn-link btn-lg collapsed text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                      <button class="btn btn-link btn-lg collapsed text-decoration-none text-dark accordion-label" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Saved Trailers
                       </button>
                     </h2>
                   </div>
-                  <div id="collapseThree" class="collapse show user-trailer-list" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div id="collapseThree" class="collapse user-trailer-list" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
                       <div>
 

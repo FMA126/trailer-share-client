@@ -28,6 +28,10 @@ footer {
 
 }
 
+.accordion-label {
+  font-family: 'Alfa Slab One', cursive;
+}
+
 // .flight-deck-accordion {
 //   height: 50vh;
 // }
@@ -49,6 +53,14 @@ footer {
 
 .media > i {
   color: green;
+}
+
+.sign-in-nav {
+  border-bottom: 1px solid black;
+}
+
+.price-day {
+  font-family: 'Alfa Slab One', cursive;
 }
 
 .search-main-trailer-list {

@@ -4,7 +4,6 @@ const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
-const config = require('../config')
 
 const onAutoSignIn = (email, password) => {
   const reqObj = {
@@ -14,7 +13,10 @@ const onAutoSignIn = (email, password) => {
     }
   }
   api.signIn(reqObj)
-    .then(ui.onSignInSuccess)
+    .then(responseData => {
+      store.user = responseData.user
+      ui.onSignInSuccess()
+    })
     .catch(ui.onSignInFailure)
 }
 

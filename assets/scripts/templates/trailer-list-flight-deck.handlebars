@@ -1,11 +1,31 @@
 {{#each trailers as |trailer|}}
 
-<li class="media trailer-list-media">
-  <img src="public/trailers/showcase-images/{{trailer.picture}}trailer.jpg" class="mr-3" alt="picture of trailer">
-  <div class="media-body">
-    <h5 class="mt-0 mb-1">{{trailer.make}} | {{trailer.model}}</h5>
-    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+  <div class="col-sm-12 px-sm-1 px-lg-0">
+    <div class="card trailer-list-card">
+      <img src="public/trailers/showcase-images/{{trailer.picture}}trailer.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bolder">{{limit trailer.make 15}} {{limit trailer.model 20}}</h5>
+        <hr>
+        <p class="card-text">Year: {{trailer.year}}</p>
+        <p>Type: {{trailer.trailer_type}}</p>
+        <div class="container-fluid d-flex justify-content-end col-12 pr-0">
+          <div class="d-flex flex-row">
+            <div>
+              $
+            </div>
+            <div class="display-4 price-day">
+              {{trailer.price}}
+            </div>
+            <div class="d-flex align-items-end font-italic">
+              / day
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-end col-12 pr-0 mt-2">
+          <a href="#" data-id="{{trailer.id}}" class="btn btn-outline-info btn-sm">Book this trailer</a>
+        </div>
+      </div>
+    </div>
   </div>
-</li>
 
 {{/each}}

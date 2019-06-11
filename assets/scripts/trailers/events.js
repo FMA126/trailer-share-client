@@ -76,14 +76,12 @@ const addHandlers = () => {
   // toogles modal to confirm if user wants to delete a trailer
   $('#user-trailer-list-body').on('click', 'li div div button.del-button', () => {
     const deleteButtonDataId = $('#user-trailer-list-body li:first-child').data('id')
-    console.log(deleteButtonDataId)
     $('#removeTrailerConfirmModal').modal('toggle')
     $('#removeTrailerButton').data('id', `${deleteButtonDataId}`)
   })
   // toggles modal to update a trailer
   $('#user-trailer-list-body').on('click', 'li div div button.update-button', () => {
     const updateFormDataId = $('#user-trailer-list-body li:first-child').data('id')
-    console.log(updateFormDataId)
     $('#create-new-trailer').modal('toggle')
     $('#create-update-trailer-label').text('Update Trailer')
     $('#update-trailer-form').removeClass('d-none')
