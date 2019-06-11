@@ -90,7 +90,19 @@ const addHandlers = () => {
     const randTwo = Math.floor(Math.random() * 51)
     $('#picture-update-option').html(randTwo)
   })
-
+  // temporary have links toggle sign in dropdow
+  $('.temp-toggle-sign-in').on('click', () => {
+    $(window).scrollTop(0)
+    $('#sign-in-dropdown').addClass('show')
+    $('#sign-in-dropdown').attr('aria-expanded', 'true')
+    $('#sign-in-dropdown-target').addClass('show')
+  })
+  $('#landing-trailer-list').on('click', 'div div div a', () => {
+    $(window).scrollTop(0)
+    $('#sign-in-dropdown').addClass('show')
+    $('#sign-in-dropdown').attr('aria-expanded', 'true')
+    $('#sign-in-dropdown-target').addClass('show')
+  })
   $('#create-trailer-form').on('submit', createTrailer)
   $('#update-trailer-form').on('submit', updateTrailer)
   $('#removeTrailerButton').on('click', removeTrailer)

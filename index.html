@@ -306,7 +306,7 @@
 
       <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sign-out-nav">
-          <a class="navbar-brand" href="#">Trailer Share</a>
+          <a class="navbar-brand text-bold" href="#">Trailer Share</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedOut" aria-controls="navbarTogglerSignedOut" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -314,17 +314,17 @@
           <div class="collapse navbar-collapse" id="navbarTogglerSignedOut">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">List your trailer</a>
+                <a class="nav-link temp-toggle-sign-in" href="#">List your trailer</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Learn more</a>
+                <a class="nav-link temp-toggle-sign-in" href="#">Learn more</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" id="dev-sign-in">Dev Sign In</a>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown" id="sign-in-dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</a>
-                <div class="dropdown-menu dropdown-menu-lg-right">
+                <div class="dropdown-menu dropdown-menu-lg-right" id="sign-in-dropdown-target">
                   <div id="sign-in-form-container">
                     <form class="px-4 py-3" id="sign-in-form">
                       <div class="form-group">
@@ -434,7 +434,7 @@
           <div class="jumbotron d-flex flex-column align-items-center">
             <h1 class="display-3">The Best Trailers</h1>
             <p class="lead">Book specialty trailers from local hosts</p>
-            <button class="btn btn-outline-primary btn-lg">Learn more</button>
+            <button class="btn btn-outline-primary btn-lg temp-toggle-sign-in">Learn more</button>
           </div>
           <div class="d-flex flex-column align-items-center">
             <div class="container">
@@ -464,7 +464,7 @@
                 </div>
               </div>
             </div>
-            <button class="btn btn-primary btn-lg align-self-center">Book now</button>
+            <button class="btn btn-primary btn-lg align-self-center temp-toggle-sign-in">Book now</button>
           </div>
           <div class="container my-4">
             <div class="row" id="landing-trailer-list">
@@ -475,7 +475,7 @@
             <h1 class="display-4">The trailer that pays for itself</h1>
             <p class="lead">Make a dent in your monthly trailer payments — on average, Trailer Share hosts can cover their payments by sharing their trailers just 3 days per month.</p>
             <hr class="my-4">
-            <button class="btn btn-outline-dark align-self-center">List your trailer</button>
+            <button class="btn btn-outline-dark align-self-center temp-toggle-sign-in">List your trailer</button>
           </div>
 
         </section>
