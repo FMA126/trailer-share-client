@@ -14,6 +14,91 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <!-- Button trigger modal -->
+      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Launch demo modal
+      </button> -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="create-new-trailer" tabindex="-1" role="dialog" aria-labelledby="create-trailer-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="create-trailer-label">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="create-new-form-container">
+                <form class="px-4 py-3" id="create-new-form">
+                  <div class="form-group">
+                    <label for="createMake">Make</label>
+                    <input name="trailer[make]" type="text" class="form-control" id="createMake" placeholder="HaulMark">
+                  </div>
+                  <div class="form-group">
+                    <label for="createModel">Model</label>
+                    <input name="trailer[model]" type="text" class="form-control" id="createModel" placeholder="Deluxe Cargo">
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerYear">year</label>
+                    <select name="trailer[year]" class="form-control" id="trailerYear">
+                      <option>2019</option>
+                      <option>2018</option>
+                      <option>2017</option>
+                      <option>2016</option>
+                      <option>2015</option>
+                      <option>2014</option>
+                      <option>2013</option>
+                      <option>2012</option>
+                      <option>2011</option>
+                      <option>2010</option>
+                      <option>2009</option>
+                      <option>2008</option>
+                      <option>2007</option>
+                      <option>2006</option>
+                      <option>2005</option>
+                      <option>2004</option>
+                      <option>2003</option>
+                      <option>2001</option>
+                      <option>2002</option>
+                      <option>2001</option>
+                      <option>2000</option>
+                      <option>1999</option>
+                      <option>1998</option>
+                      <option>1997</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerType">Trailer Type</label>
+                    <select name="trailer[trailer_type]" class="form-control" id="trailerType">
+                      <option>Single Car</option>
+                      <option>Multi Car</option>
+                      <option>Flat Bed</option>
+                      <option>Open</option>
+                      <option>Enclosed</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                      <span class="input-group-text">0.00</span>
+                    </div>
+                    <input name="trailer[price]" type="text" class="form-control" id="priceTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
+                  </div>
+                  <hr class="my-2">
+                  <small id="createHelp" class="form-text text-muted">
+                    Members will be stoked to rent from you!
+                  </small>
+                  <button type="submit" class="btn btn-primary">List trailer</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sign-out-nav">
           <a class="navbar-brand" href="#">Trailer Share</a>
@@ -98,7 +183,7 @@
           <div class="collapse navbar-collapse" id="navbarTogglerSignedIn">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">List your trailer</a>
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#create-new-trailer">List your trailer</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Change password</a>
@@ -190,9 +275,9 @@
 
         </section>
         <!-- Signed-in Landing Page -->
-        <section id="signed-in-flight-deck-page">
+        <section class="container-fluid" id="signed-in-flight-deck-page">
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="col-sm-12 col-md-12 col-lg-4 pl-0">
               <nav class="navbar navbar-light bg-light" id="signed-in-nav-search">
                 <a class="navbar-brand" href="#">Search</a>
                 <button id="navbarTogglerSearchButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSearch" aria-controls="navbarTogglerSearch" aria-expanded="false" aria-label="Toggle navigation">
@@ -228,12 +313,12 @@
 
               </ul>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="col-sm-12 col-md-12 col-lg-4 pr-0">
               <div class="accordion" id="accordionExample">
                 <div class="card">
                   <div class="card-header" id="user-trailer-list-heading">
                     <h2 class="mb-0">
-                      <button id="user-trailer-button" class="btn btn-link text-decoration-none" type="button" data-toggle="collapse" data-target="#user-trailer-list" aria-expanded="false" aria-controls="user-trailer-list">
+                      <button id="user-trailer-button" class="btn btn-link btn-lg text-decoration-none" type="button" data-toggle="collapse" data-target="#user-trailer-list" aria-expanded="false" aria-controls="user-trailer-list">
                         Your Trailers
                       </button>
                     </h2>
@@ -252,8 +337,8 @@
                 <div class="card">
                   <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
-                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Collapsible Group Item #2
+                      <button class="btn btn-link btn-lg collapsed text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Reservations
                       </button>
                     </h2>
                   </div>
@@ -268,8 +353,8 @@
                 <div class="card">
                   <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
-                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                        Collapsible Group Item #3
+                      <button class="btn btn-link btn-lg collapsed text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Saved Trailers
                       </button>
                     </h2>
                   </div>

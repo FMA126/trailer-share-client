@@ -1,7 +1,7 @@
 'use strict'
 
 const store = require('../store')
-// const getFormFields = require('../../../lib/get-form-fields.js')
+const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
 
@@ -34,13 +34,16 @@ const updateTrailer = (event) => {
 }
 
 const createTrailer = (event) => {
-  // console.log('hi')
+  console.log('hi form create a trailer')
   event.preventDefault()
-  // api.deleteBook(event)
-  //   .then(res => {
-  //     onGetBooks(event)
-  //   })
-  //   .catch(ui.failure)
+  const form = event.target
+  const formData = getFormFields(form)
+  api.onCreateTrailer(formData)
+    .then(res => {
+      ui.onCreateTrailerSuccess(res)
+      showTrailerListOnIndex(event)
+    })
+    .catch(ui.onCreateTrailerFailure)
 }
 
 const onRemoveTrailer = (event) => {
@@ -68,6 +71,7 @@ const addHandlers = () => {
   })
   $('#user-trailer-list-body').on('click', 'li div div button.del-button', onRemoveTrailer)
   $('#user-trailer-list-body').on('click', 'li div div button.update-button', onRemoveTrailer)
+  $('#create-new-form').on('submit', createTrailer)
 }
 
 module.exports = {

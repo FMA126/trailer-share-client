@@ -27,7 +27,19 @@ const deleteTrailer = (event) => {
   })
 }
 
+const onCreateTrailer = formData => {
+  return $.ajax({
+    url: config.apiUrl + '/trailers/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
+  })
+}
+
 module.exports = {
   onShowTrailerListOnIndex,
-  deleteTrailer
+  deleteTrailer,
+  onCreateTrailer
 }
