@@ -14,10 +14,10 @@ $(() => {
     $('#navbarTogglerSearch').addClass('show')
     $('#navbarTogglerSearchButton').addClass('d-none')
   }
-  const randTwo = Math.floor(Math.random() * 51)
-  $('#picture-update-option').html(randTwo)
-  const rand = Math.floor(Math.random() * 51)
-  $('#picture-create-option').html(rand)
+  // const randTwo = Math.floor(Math.random() * 51)
+  // $('#picture-update-option').html(randTwo)
+  // const rand = Math.floor(Math.random() * 51)
+  // $('#picture-create-option').html(rand)
 
   authEvents.addHandlers()
   trailerEvents.addHandlers()

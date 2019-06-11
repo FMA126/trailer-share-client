@@ -41,8 +41,8 @@ const updateTrailer = (event) => {
 const createTrailer = (event) => {
   console.log('hi form create a trailer')
   event.preventDefault()
-  console.log('this is the event create', event)
-  console.log('this is the event target create', event.target)
+  // console.log('this is the event create', event)
+  // console.log('this is the event target create', event.target)
   const form = event.target
   const formData = getFormFields(form)
   api.onCreateTrailer(formData)
@@ -64,7 +64,7 @@ const removeTrailer = (event) => {
 
 const addHandlers = () => {
   // $(window).on('load', signedOutLandingPageLoad)
-  console.log($('#picture-update-option').html())
+  // console.log($('#picture-update-option').html())
   $(document).ready(() => {
     store.user = { token: '' }
     showTrailerListOnIndex()
@@ -77,17 +77,31 @@ const addHandlers = () => {
       showTrailerListOnIndex()
     }
   })
+  // if ($('#create-new-trailer').attr('class') === 'modal fade show') {
+  //   const rand = Math.floor(Math.random() * 51)
+  //   $('#picture-create-option').html(rand)
+  //   console.log($('#picture-create-option').html(rand))
+  // }
+  // console.log($('#create-new-trailer').attr('class') === 'modal fade show')
+  $('#createMake').on('click', () => {
+    const rand = Math.floor(Math.random() * 51)
+    $('#picture-create-option').html(rand)
+  })
   $('#user-trailer-list-body').on('click', 'li div div button.del-button', removeTrailer)
   $('#user-trailer-list-body').on('click', 'li div div button.update-button', () => {
+    const updateFormDataId = $('#user-trailer-list-body li:first-child').data('id')
+    // console.log(updateFormDataId)
     $('#create-new-trailer').modal('toggle')
     $('#create-update-trailer-label').text('Update Trailer')
     $('#update-trailer-form').removeClass('d-none')
     $('#create-trailer-form').addClass('d-none')
-    $('#update-trailer-form').attr('data-id', `${$(event.target).data('id')}`)
+    $('#update-trailer-form').data('id', `${updateFormDataId}`)
+    const randTwo = Math.floor(Math.random() * 51)
+    $('#picture-update-option').html(randTwo)
     // updateTrailer()
   })
-  $('#create-trailer-form').on('submit', createTrailer())
-  $('#update-trailer-form').on('submit', updateTrailer())
+  $('#create-trailer-form').on('submit', createTrailer)
+  $('#update-trailer-form').on('submit', updateTrailer)
 }
 
 module.exports = {
