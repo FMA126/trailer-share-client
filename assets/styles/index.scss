@@ -33,7 +33,7 @@ footer {
 // }
 
 .flight-deck-m-t-l-c {
-  height: 80vh;
+  height: 85vh;
   overflow-y: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
@@ -49,6 +49,17 @@ footer {
 
 .media > i {
   color: green;
+}
+
+.search-main-trailer-list {
+  height: 85vh;
+  overflow-y: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+.search-main-trailer-list::-webkit-scrollbar {
+  width: 0 !important
 }
 
 .sign-switch {
@@ -69,10 +80,14 @@ footer {
 }
 
 .user-trailer-list {
-  height: 50vh;
+  height: 52vh;
   overflow-y: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
+}
+
+.user-trailer-list::-webkit-scrollbar {
+  width: 0 !important
 }
 
 // .switchSignInUp:hover {
