@@ -15,7 +15,7 @@ const onShowTrailerListOnIndex = () => {
   })
 }
 
-const deleteTrailer = (event) => {
+const deleteTrailer = () => {
   console.log('hi delete api', event.target.data)
   const id = $(event.target).data('id')
   return $.ajax({
@@ -24,6 +24,18 @@ const deleteTrailer = (event) => {
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
+  })
+}
+
+const onUpdateTrailer = formData => {
+  const id = $(event.target).data('id')
+  return $.ajax({
+    url: config.apiUrl + '/trailers/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
   })
 }
 
@@ -41,5 +53,6 @@ const onCreateTrailer = formData => {
 module.exports = {
   onShowTrailerListOnIndex,
   deleteTrailer,
+  onUpdateTrailer,
   onCreateTrailer
 }

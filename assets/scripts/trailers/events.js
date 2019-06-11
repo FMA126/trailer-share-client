@@ -26,16 +26,23 @@ const showATrailer = (event) => {
 const updateTrailer = (event) => {
   // console.log('hi')
   event.preventDefault()
-  // api.deleteBook(event)
-  //   .then(res => {
-  //     onGetBooks(event)
-  //   })
-  //   .catch(ui.failure)
+  console.log('this is the event update', event)
+  console.log('this is the event target update', event.target)
+  const form = event.target
+  const formData = getFormFields(form)
+  api.onUpdateTrailer(formData)
+    .then(res => {
+      ui.onUpdateTrailerSuccess(res)
+      showTrailerListOnIndex(event)
+    })
+    .catch(ui.onUpdateTrailerFailure)
 }
 
 const createTrailer = (event) => {
   console.log('hi form create a trailer')
   event.preventDefault()
+  console.log('this is the event create', event)
+  console.log('this is the event target create', event.target)
   const form = event.target
   const formData = getFormFields(form)
   api.onCreateTrailer(formData)
@@ -46,7 +53,7 @@ const createTrailer = (event) => {
     .catch(ui.onCreateTrailerFailure)
 }
 
-const onRemoveTrailer = (event) => {
+const removeTrailer = (event) => {
   // console.log('hi')
   event.preventDefault()
   api.deleteTrailer(event)
@@ -57,6 +64,7 @@ const onRemoveTrailer = (event) => {
 
 const addHandlers = () => {
   // $(window).on('load', signedOutLandingPageLoad)
+  console.log($('#picture-update-option').html())
   $(document).ready(() => {
     store.user = { token: '' }
     showTrailerListOnIndex()
@@ -69,9 +77,17 @@ const addHandlers = () => {
       showTrailerListOnIndex()
     }
   })
-  $('#user-trailer-list-body').on('click', 'li div div button.del-button', onRemoveTrailer)
-  $('#user-trailer-list-body').on('click', 'li div div button.update-button', onRemoveTrailer)
-  $('#create-new-form').on('submit', createTrailer)
+  $('#user-trailer-list-body').on('click', 'li div div button.del-button', removeTrailer)
+  $('#user-trailer-list-body').on('click', 'li div div button.update-button', () => {
+    $('#create-new-trailer').modal('toggle')
+    $('#create-update-trailer-label').text('Update Trailer')
+    $('#update-trailer-form').removeClass('d-none')
+    $('#create-trailer-form').addClass('d-none')
+    $('#update-trailer-form').attr('data-id', `${$(event.target).data('id')}`)
+    // updateTrailer()
+  })
+  $('#create-trailer-form').on('submit', createTrailer())
+  $('#update-trailer-form').on('submit', updateTrailer())
 }
 
 module.exports = {

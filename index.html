@@ -20,18 +20,18 @@
       </button> -->
 
       <!-- Modal -->
-      <div class="modal fade" id="create-new-trailer" tabindex="-1" role="dialog" aria-labelledby="create-trailer-label" aria-hidden="true">
+      <div class="modal fade" id="create-new-trailer" tabindex="-1" role="dialog" aria-labelledby="create-update-trailer-label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="create-trailer-label">Modal title</h5>
+              <h5 class="modal-title" id="create-update-trailer-label">Add A New Trailer</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               <div id="create-new-form-container">
-                <form class="px-4 py-3" id="create-new-form">
+                <form class="px-4 py-3" id="create-trailer-form">
                   <div class="form-group">
                     <label for="createMake">Make</label>
                     <input name="trailer[make]" type="text" class="form-control" id="createMake" placeholder="HaulMark">
@@ -41,8 +41,8 @@
                     <input name="trailer[model]" type="text" class="form-control" id="createModel" placeholder="Deluxe Cargo">
                   </div>
                   <div class="form-group">
-                    <label for="trailerYear">year</label>
-                    <select name="trailer[year]" class="form-control" id="trailerYear">
+                    <label for="trailerCreateYear">Year</label>
+                    <select name="trailer[year]" class="form-control" id="trailerCreateYear">
                       <option>2019</option>
                       <option>2018</option>
                       <option>2017</option>
@@ -70,8 +70,8 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="trailerType">Trailer Type</label>
-                    <select name="trailer[trailer_type]" class="form-control" id="trailerType">
+                    <label for="trailerCreateType">Trailer Type</label>
+                    <select name="trailer[trailer_type]" class="form-control" id="trailerCreateType">
                       <option>Single Car</option>
                       <option>Multi Car</option>
                       <option>Flat Bed</option>
@@ -80,8 +80,8 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="hitchType">Hitch Type</label>
-                    <select name="trailer[hitch_type]" class="form-control" id="hitchType">
+                    <label for="hitchCreateType">Hitch Type</label>
+                    <select name="trailer[hitch_type]" class="form-control" id="hitchCreateType">
                       <option>Class 1</option>
                       <option>Class 2</option>
                       <option>Class 3</option>
@@ -94,8 +94,8 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="trailerLength">Trailer Length</label>
-                    <select name="trailer[length]" class="form-control" id="trailerLength">
+                    <label for="trailerCreateLength">Trailer Length</label>
+                    <select name="trailer[length]" class="form-control" id="trailerCreateLength">
                       <option>5 ft</option>
                       <option>6 ft</option>
                       <option>7 ft</option>
@@ -113,8 +113,8 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="gvwr">Gross Vehicle Weight Rating (Trailer)</label>
-                    <select name="trailer[gvwr]" class="form-control" id="gvwr">
+                    <label for="gvwrCreate">Gross Vehicle Weight Rating (Trailer)</label>
+                    <select name="trailer[gvwr]" class="form-control" id="gvwrCreate">
                       <option>1500</option>
                       <option>2000</option>
                       <option>3000</option>
@@ -126,16 +126,153 @@
                       <option>25000</option>
                     </select>
                   </div>
+                  <div class="form-group">
+                    <label for="axelsCreate">Number of Axels</label>
+                    <select name="trailer[axels]" class="form-control" type="number" id="axelsCreate">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </div>
+                  <div class="form-group invisible">
+                    <label for="picture-create-select">Picture</label>
+                    <select name="trailer[picture]" class="form-control" type="number" id="picture-create-select">
+                      <option id="picture-create-option"></option>
+                    </select>
+                  </div>
 
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">$</span>
                       <span class="input-group-text">0.00</span>
                     </div>
-                    <input name="trailer[price]" type="number" min="0" step=".01" class="form-control" id="priceTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
+                    <input name="trailer[price]" type="number" min="0" step=".01" class="form-control" id="priceCreateTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
                   </div>
                   <hr class="my-2">
                   <small id="createHelp" class="form-text text-muted">
+                    Members will be stoked to rent from you!
+                  </small>
+                  <button type="submit" class="btn btn-primary">List trailer</button>
+                </form>
+                <form class="px-4 py-3 d-none" id="update-trailer-form">
+                  <div class="form-group">
+                    <label for="updateMake">Make</label>
+                    <input name="trailer[make]" type="text" class="form-control" id="updateMake" placeholder="HaulMark">
+                  </div>
+                  <div class="form-group">
+                    <label for="updateModel">Model</label>
+                    <input name="trailer[model]" type="text" class="form-control" id="updateModel" placeholder="Deluxe Cargo">
+                  </div>
+                  <div class="form-group">
+                    <label for="updateYear">Year</label>
+                    <select name="trailer[year]" class="form-control" id="updateYear">
+                      <option>2019</option>
+                      <option>2018</option>
+                      <option>2017</option>
+                      <option>2016</option>
+                      <option>2015</option>
+                      <option>2014</option>
+                      <option>2013</option>
+                      <option>2012</option>
+                      <option>2011</option>
+                      <option>2010</option>
+                      <option>2009</option>
+                      <option>2008</option>
+                      <option>2007</option>
+                      <option>2006</option>
+                      <option>2005</option>
+                      <option>2004</option>
+                      <option>2003</option>
+                      <option>2001</option>
+                      <option>2002</option>
+                      <option>2001</option>
+                      <option>2000</option>
+                      <option>1999</option>
+                      <option>1998</option>
+                      <option>1997</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerUpdateType">Trailer Type</label>
+                    <select name="trailer[trailer_type]" class="form-control" id="trailerUpdateType">
+                      <option>Single Car</option>
+                      <option>Multi Car</option>
+                      <option>Flat Bed</option>
+                      <option>Open</option>
+                      <option>Enclosed</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="hitchUpdateType">Hitch Type</label>
+                    <select name="trailer[hitch_type]" class="form-control" id="hitchUpdateType">
+                      <option>Class 1</option>
+                      <option>Class 2</option>
+                      <option>Class 3</option>
+                      <option>Class 4</option>
+                      <option>Class 5</option>
+                      <option>5th Wheel</option>
+                      <option>Gooseneck</option>
+                      <option>Pintle</option>
+                      <option>Enclosed</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerUpdateLength">Trailer Length</label>
+                    <select name="trailer[length]" class="form-control" id="trailerUpdateLength">
+                      <option>5 ft</option>
+                      <option>6 ft</option>
+                      <option>7 ft</option>
+                      <option>8 ft</option>
+                      <option>9 ft</option>
+                      <option>10 ft</option>
+                      <option>12 ft</option>
+                      <option>15 ft</option>
+                      <option>17 ft</option>
+                      <option>20 ft</option>
+                      <option>25 ft</option>
+                      <option>30 ft</option>
+                      <option>35 ft</option>
+                      <option>40 ft</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="gvwrUpdate">Gross Vehicle Weight Rating (Trailer)</label>
+                    <select name="trailer[gvwr]" class="form-control" id="gvwrUpdate">
+                      <option>1500</option>
+                      <option>2000</option>
+                      <option>3000</option>
+                      <option>6000</option>
+                      <option>9000</option>
+                      <option>12000</option>
+                      <option>15000</option>
+                      <option>20000</option>
+                      <option>25000</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="axelsUpdate">Number of Axels</label>
+                    <select name="trailer[axels]" class="form-control" id="axelsUpdate">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </div>
+                  <div class="form-group invisible">
+                    <label for="picture-update-select">Picture</label>
+                    <select name="trailer[picture]" class="form-control" id="picture-update-select">
+                      <option id="picture-update-option"></option>
+                    </select>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                      <span class="input-group-text">0.00</span>
+                    </div>
+                    <input name="trailer[price]" type="number" min="0" step=".01" class="form-control" id="priceUpdateTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
+                  </div>
+                  <hr class="my-2">
+                  <small id="updateHelp" class="form-text text-muted">
                     Members will be stoked to rent from you!
                   </small>
                   <button type="submit" class="btn btn-primary">List trailer</button>
