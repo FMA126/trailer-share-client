@@ -6,8 +6,6 @@ const api = require('./api')
 const ui = require('./ui')
 
 const showTrailerListOnIndex = event => {
-  // event.preventDefault()
-
   api.onShowTrailerListOnIndex()
     .then(ui.onshowTrailerListOnIndexSuccess)
     .catch(ui.onshowTrailerListOnIndexFailure)
@@ -24,10 +22,7 @@ const showATrailer = (event) => {
 }
 
 const updateTrailer = (event) => {
-  // console.log('hi')
   event.preventDefault()
-  console.log('this is the event update', event)
-  console.log('this is the event target update', event.target)
   const form = event.target
   const formData = getFormFields(form)
   api.onUpdateTrailer(formData)
@@ -39,10 +34,7 @@ const updateTrailer = (event) => {
 }
 
 const createTrailer = (event) => {
-  console.log('hi form create a trailer')
   event.preventDefault()
-  // console.log('this is the event create', event)
-  // console.log('this is the event target create', event.target)
   const form = event.target
   const formData = getFormFields(form)
   api.onCreateTrailer(formData)
@@ -54,43 +46,44 @@ const createTrailer = (event) => {
 }
 
 const removeTrailer = (event) => {
-  // console.log('hi')
   event.preventDefault()
   api.deleteTrailer(event)
     .then(res => {
       showTrailerListOnIndex(event)
+      ui.onRemoveTrailerSuccess(res)
     })
 }
 
 const addHandlers = () => {
-  // $(window).on('load', signedOutLandingPageLoad)
-  // console.log($('#picture-update-option').html())
+  // shows trailers on signed out landing page
   $(document).ready(() => {
     store.user = { token: '' }
     showTrailerListOnIndex()
   })
+  // shows trailers owned by signed in user
   $('#user-trailer-list-heading').on('click', () => {
-    // console.log($('#user-trailer-button').attr('aria-expanded'))
     const expanded = $('#user-trailer-button').attr('aria-expanded')
     const expandedBoolean = JSON.parse(expanded)
     if (!expandedBoolean) {
       showTrailerListOnIndex()
     }
   })
-  // if ($('#create-new-trailer').attr('class') === 'modal fade show') {
-  //   const rand = Math.floor(Math.random() * 51)
-  //   $('#picture-create-option').html(rand)
-  //   console.log($('#picture-create-option').html(rand))
-  // }
-  // console.log($('#create-new-trailer').attr('class') === 'modal fade show')
+  // listens for click on trailer make input on list new trailer form and gives picture select option a random number to access image of a trailer
   $('#createMake').on('click', () => {
     const rand = Math.floor(Math.random() * 51)
     $('#picture-create-option').html(rand)
   })
-  $('#user-trailer-list-body').on('click', 'li div div button.del-button', removeTrailer)
+  // toogles modal to confirm if user wants to delete a trailer
+  $('#user-trailer-list-body').on('click', 'li div div button.del-button', () => {
+    const deleteButtonDataId = $('#user-trailer-list-body li:first-child').data('id')
+    console.log(deleteButtonDataId)
+    $('#removeTrailerConfirmModal').modal('toggle')
+    $('#removeTrailerButton').data('id', `${deleteButtonDataId}`)
+  })
+  // toggles modal to update a trailer
   $('#user-trailer-list-body').on('click', 'li div div button.update-button', () => {
     const updateFormDataId = $('#user-trailer-list-body li:first-child').data('id')
-    // console.log(updateFormDataId)
+    console.log(updateFormDataId)
     $('#create-new-trailer').modal('toggle')
     $('#create-update-trailer-label').text('Update Trailer')
     $('#update-trailer-form').removeClass('d-none')
@@ -98,10 +91,11 @@ const addHandlers = () => {
     $('#update-trailer-form').data('id', `${updateFormDataId}`)
     const randTwo = Math.floor(Math.random() * 51)
     $('#picture-update-option').html(randTwo)
-    // updateTrailer()
   })
+
   $('#create-trailer-form').on('submit', createTrailer)
   $('#update-trailer-form').on('submit', updateTrailer)
+  $('#removeTrailerButton').on('click', removeTrailer)
 }
 
 module.exports = {

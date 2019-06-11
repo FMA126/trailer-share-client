@@ -44,7 +44,6 @@ const onShowAboutSuccess = () => {
 }
 
 const onSignUpSuccess = responseData => {
-  console.log('successfully signed up', responseData)
   store.signUpPassed = true
 
   $(window).scrollTop(0)
@@ -55,18 +54,15 @@ const onSignUpSuccess = responseData => {
 }
 
 const onSignUpFailure = responseData => {
-  console.log('failure to sign in', responseData)
   store.signUpPassed = false
   $(window).scrollTop(0)
   $('form').trigger('reset')
   $('#emailHelp1').text('Email already exists or passwords do not match')
   $('#emailHelp1').addClass('text-danger')
   $('#emailHelp1').removeClass('text-muted')
-  // $('#game-board-section').removeClass('hide')
 }
 
 const onSignInSuccess = responseData => {
-  console.log('successfully signed in', responseData)
   $('form').trigger('reset')
   $(window).scrollTop(0)
 
@@ -85,7 +81,6 @@ const onSignInSuccess = responseData => {
 }
 
 const onSignInFailure = responseData => {
-  console.log('failure to sign in', responseData)
   $(window).scrollTop(0)
   $('form').trigger('reset')
   $('#emailHelp2').text('Email already exists or passwords do not match')
@@ -94,7 +89,6 @@ const onSignInFailure = responseData => {
 }
 
 const onSignOutSuccess = responseData => {
-  console.log('successfully signed out', responseData)
   store.active = false
   $(window).scrollTop(0)
   $('#navbarTogglerSignedIn').collapse('hide')
@@ -103,45 +97,20 @@ const onSignOutSuccess = responseData => {
   $('#signed-in-flight-deck-page').addClass('d-none')
   $('#sign-out-nav').removeClass('d-none')
   $('#sign-in-nav').addClass('d-none')
-  // $('#game-board-single').tooltip('enable')
-  // $('.box').text('')
-  // $('.box').removeClass('highlight-x')
-  // $('.box').removeClass('highlight-o')
-  // $('#game-board-single').tooltip('enable')
-  // $('#game-board-multi').addClass('hide')
-  // $('#game-board-single').removeClass('hide')
-  // $('#message').text('Signed out successfully!')
-  // $('#landing-auth').removeClass('hide')
-  // $('.dots').attr('data-toggle', '')
-  // $('.dots').removeClass('pointer')
-  // $('#game-master').addClass('hide')
-  // $('form').trigger('reset')
 }
 
 const onSignOutFailure = responseData => {
-  console.log('failure to sign out', responseData)
   $(window).scrollTop(0)
-  // $('#message').text('Signed out failed!')
-  // $('form').trigger('reset')
 }
 
 const onChangePasswordSuccess = () => {
-  console.log('successfully changed password')
   $(window).scrollTop(0)
-  // $('#passwordHelp').removeClass('hide')
-  // $('#passwordHelp').text('Password changed successfully.')
-  // $('#passwordHelp').removeClass('attention')
   $('form').trigger('reset')
   $('#change-password-form-container').collapse('hide')
 }
 
 const onChangePasswordFailure = responseData => {
-  console.log('failure to change password', responseData)
   $(window).scrollTop(0)
-  // $('#passwordHelp').removeClass('hide')
-  // $('#passwordHelp').text('Please re-enter current password.')
-  // $('#passwordHelp').addClass('attention')
-  // $('form').trigger('reset')
 }
 
 module.exports = {

@@ -4,8 +4,6 @@ const config = require('../config')
 const store = require('../store')
 
 const onShowTrailerListOnIndex = () => {
-  // console.log('from api signed out landing page load')
-
   return $.ajax({
     url: config.apiUrl + '/trailers',
     method: 'GET',
@@ -16,7 +14,7 @@ const onShowTrailerListOnIndex = () => {
 }
 
 const deleteTrailer = () => {
-  console.log('hi delete api', event.target.data)
+  console.log('hi delete api', event.target)
   const id = $(event.target).data('id')
   return $.ajax({
     url: config.apiUrl + '/trailers/' + id,
