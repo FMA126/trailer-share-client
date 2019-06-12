@@ -1,53 +1,53 @@
 {{#each trailers as |trailer|}}
 
-<li class="media trailer-list-media mb-4" id="update-from-linkers" data-id="{{trailer.id}}">
-  <img src="public/trailers/showcase-images/{{trailer.picture}}trailer.jpg" class="mr-3 user-list-picture" alt="picture of trailer" data-picture="{{trailer_picture}}">
+<li class="media trailer-list-media mb-4" data-id="{{trailer.id}}">
+  <img src="public/trailers/showcase-images/{{trailer.picture}}trailer.jpg" class="mr-3 user-list-picture-{{trailer.id}}" alt="picture of trailer" data-picture="{{trailer_picture}}">
   <div class="media-body">
-    <h5 class="mt-0 mb-1 text-center font-weight-bold user-list-make" data-make="{{trailer.make}}">{{limit trailer.make 15}}</h5>
-    <p class="my-0 text-center user-list-model" data-t-model= "{{trailer.model}}">{{limit trailer.model 15}}</p>
+    <h5 class="mt-0 mb-1 text-center font-weight-bold user-list-make-{{trailer.id}}" data-make="{{trailer.make}}">{{limit trailer.make 15}}</h5>
+    <p class="my-0 text-center user-list-model-{{trailer.id}}" data-t-model= "{{trailer.model}}">{{limit trailer.model 15}}</p>
     <hr class="mt-0">
     <div class="bubble-trailer-1">
       <div class="row mb-2">
         <div class="col-6 text-center">
           Year:
         </div>
-        <div class="col-6 text-center user-list-year" data-year="{{trailer.year}}">
+        <div class="col-6 text-center user-list-year-{{trailer.id}}" data-year="{{trailer.year}}">
           {{trailer.year}}
         </div>
         <div class="col-6 text-center">
           Type:
         </div>
-        <div class="col-6 text-center user-list-trailer_type" data-trailer_type="{{trailer.trailer_type}}">
+        <div class="col-6 text-center user-list-trailer_type-{{trailer.id}}" data-trailer_type="{{trailer.trailer_type}}">
           {{trailer.trailer_type}}
         </div>
         <div class="col-6 text-center">
           Hitch:
         </div>
-        <div class="col-6 text-center user-list-hitch_type" data-hitch_type="{{trailer.hitch_type}}">
+        <div class="col-6 text-center user-list-hitch_type-{{trailer.id}}" data-hitch_type="{{trailer.hitch_type}}">
           {{trailer.hitch_type}}
         </div>
         <div class="col-6 text-center">
           Length:
         </div>
-        <div class="col-6 text-center user-list-t-length" data-t_length="{{trailer.length}}">
+        <div class="col-6 text-center user-list-t-length-{{trailer.id}}" data-t_length="{{trailer.length}}">
           {{trailer.length}} ft
         </div>
         <div class="col-6 text-center">
           GVWR:
         </div>
-        <div class="col-6 text-center user-list-gvwr" data-gvwr="{{trailer.gvwr}}">
+        <div class="col-6 text-center user-list-gvwr-{{trailer.id}}" data-gvwr="{{trailer.gvwr}}">
           {{trailer.gvwr}} lbs
         </div>
         <div class="col-6 text-center">
           Axels:
         </div>
-        <div class="col-6 text-center user-list-axels" data-axels="{{trailer.axels}}">
+        <div class="col-6 text-center user-list-axels-{{trailer.id}}" data-axels="{{trailer.axels}}">
           {{trailer.axels}}
         </div>
         <div class="col-6 text-center">
           Price:
         </div>
-        <div class="col-6 text-price user-list-price" data-price="{{trailer.price}}">
+        <div class="col-6 text-price user-list-price-{{trailer.id}}" data-price="{{trailer.price}}">
           ${{trailer.price}} / day
         </div>
       </div>

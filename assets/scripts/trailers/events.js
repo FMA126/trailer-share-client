@@ -86,32 +86,53 @@ const addHandlers = () => {
     $('#picture-create-option').html(rand)
   })
   // toogles modal to confirm if user wants to delete a trailer
-  $('#user-trailer-list-body').on('click', 'li div div button.del-button', () => {
-    const deleteButtonDataId = $('#user-trailer-list-body li:first-child').data('id')
+  $('#user-trailer-list-body').on('click', 'li div div button.del-button', (event) => {
+    const deleteButtonDataId = event.target.getAttribute('data-id')
+
     $('#removeTrailerConfirmModal').modal('toggle')
     $('#removeTrailerButton').data('id', `${deleteButtonDataId}`)
   })
   // toggles modal to update a trailer
-  $('#user-trailer-list-body').on('click', 'li div div button.update-button', () => {
-    const updateFormDataId = $('#user-trailer-list-body li:first-child').data('id')
+  $('#user-trailer-list-body').on('click', 'li div div button.update-button', (event) => {
+    const updateFormDataId = event.target.getAttribute('data-id')
+
     // toggle modal and show update form
     $('#create-new-trailer').modal('toggle')
     $('#update-trailer-form').removeClass('d-none')
     $('#create-trailer-form').addClass('d-none')
     $('#update-trailer-form').data('id', `${updateFormDataId}`)
     // populate form
-    const randTwo = Math.floor(Math.random() * 51)
-    $('#picture-update-option').html(randTwo)
-    $('#updateMake').val(`${$('#user-trailer-list-body h5.user-list-make').data('make')}`)
-    $('#updateModel').val(`${$('#user-trailer-list-body p.user-list-model').data('t-model')}`)
-    $('#updateYear').val(`${$('#user-trailer-list-body div.user-list-year').data('year')}`)
-    $('#trailerUpdateType').val(`${$('#user-trailer-list-body div.user-list-trailer_type').data('trailer_type')}`)
-    $('#hitchUpdateType').val(`${$('#user-trailer-list-body div.user-list-hitch_type').data('hitch_type')}`)
-    $('#trailerUpdateLength').val(`${$('#user-trailer-list-body div.user-list-t-length').data('t_length')}` + ' ' + 'ft')
-    $('#gvwrUpdate').val(`${$('#user-trailer-list-body div.user-list-gvwr').data('gvwr')}`)
-    $('#axelsUpdate').val(`${$('#user-trailer-list-body div.user-list-axels').data('axels')}`)
-    $('#priceUpdateTrailer').val(`${$('#user-trailer-list-body div.user-list-price').data('price')}`)
-    // $('#picture-update-option').val(`${$('#user-trailer-list-body div.user-list-').data('')}`)
+    // const randTwo = Math.floor(Math.random() * 51)
+    // $('#picture-update-option').html(randTwo)
+    // helper for string interperlation jig saw puzzle
+    let make = '#user-trailer-list-body h5.user-list-make-' + updateFormDataId
+    make = $(`${make}`).data('make')
+    let model = '#user-trailer-list-body p.user-list-model-' + updateFormDataId
+    model = $(`${model}`).data('t-model')
+    let year = '#user-trailer-list-body div.user-list-year-' + updateFormDataId
+    year = $(`${year}`).data('year')
+    let trailerType = '#user-trailer-list-body div.user-list-trailer_type-' + updateFormDataId
+    trailerType = $(`${trailerType}`).data('trailer_type')
+    let hitchType = '#user-trailer-list-body div.user-list-hitch_type-' + updateFormDataId
+    hitchType = $(`${hitchType}`).data('hitch_type')
+    let length = '#user-trailer-list-body div.user-list-t-length-' + updateFormDataId
+    length = $(`${length}`).data('t_length')
+    let gvwr = '#user-trailer-list-body div.user-list-gvwr-' + updateFormDataId
+    gvwr = $(`${gvwr}`).data('gvwr')
+    let axels = '#user-trailer-list-body div.user-list-axels-' + updateFormDataId
+    axels = $(`${axels}`).data('axels')
+    let price = '#user-trailer-list-body div.user-list-price-' + updateFormDataId
+    price = $(`${price}`).data('price')
+
+    $('#updateMake').val(`${make}`)
+    $('#updateModel').val(`${model}`)
+    $('#updateYear').val(year)
+    $('#trailerUpdateType').val(trailerType)
+    $('#hitchUpdateType').val(hitchType)
+    $('#trailerUpdateLength').val(length + ' ' + 'ft')
+    $('#gvwrUpdate').val(gvwr)
+    $('#axelsUpdate').val(axels)
+    $('#priceUpdateTrailer').val(price)
   })
   // temporary have links toggle sign in dropdow
   // $('.temp-toggle-sign-in').on('click', () => {

@@ -30,6 +30,7 @@ const onCreateTrailerFailure = responseData => {
 }
 
 const onUpdateTrailerSuccess = (responseData) => {
+  $('form').trigger('reset')
   $('#create-update-trailer-label').text('Add A New Trailer')
   $('#update-trailer-form').addClass('d-none')
   $('#create-trailer-form').removeClass('d-none')
@@ -37,6 +38,7 @@ const onUpdateTrailerSuccess = (responseData) => {
 }
 const onUpdateTrailerFailure = (responseData) => {
   // console.log('failure from update ui')
+  $('form').trigger('reset')
 }
 
 const onRemoveTrailerSuccess = (responseData) => {
