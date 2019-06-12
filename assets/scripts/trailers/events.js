@@ -94,27 +94,40 @@ const addHandlers = () => {
   // toggles modal to update a trailer
   $('#user-trailer-list-body').on('click', 'li div div button.update-button', () => {
     const updateFormDataId = $('#user-trailer-list-body li:first-child').data('id')
+    // toggle modal and show update form
     $('#create-new-trailer').modal('toggle')
-    $('#create-update-trailer-label').text('Update Trailer')
     $('#update-trailer-form').removeClass('d-none')
     $('#create-trailer-form').addClass('d-none')
     $('#update-trailer-form').data('id', `${updateFormDataId}`)
+    // populate form
     const randTwo = Math.floor(Math.random() * 51)
     $('#picture-update-option').html(randTwo)
+    $('#updateMake').val(`${$('#user-trailer-list-body h5.user-list-make').data('make')}`)
+    $('#updateModel').val(`${$('#user-trailer-list-body p.user-list-model').data('t-model')}`)
+    $('#updateYear').val(`${$('#user-trailer-list-body div.user-list-year').data('year')}`)
+    $('#trailerUpdateType').val(`${$('#user-trailer-list-body div.user-list-trailer_type').data('trailer_type')}`)
+    $('#hitchUpdateType').val(`${$('#user-trailer-list-body div.user-list-hitch_type').data('hitch_type')}`)
+    $('#trailerUpdateLength').val(`${$('#user-trailer-list-body div.user-list-t-length').data('t_length')}` + ' ' + 'ft')
+    $('#gvwrUpdate').val(`${$('#user-trailer-list-body div.user-list-gvwr').data('gvwr')}`)
+    $('#axelsUpdate').val(`${$('#user-trailer-list-body div.user-list-axels').data('axels')}`)
+    $('#priceUpdateTrailer').val(`${$('#user-trailer-list-body div.user-list-price').data('price')}`)
+    // $('#picture-update-option').val(`${$('#user-trailer-list-body div.user-list-').data('')}`)
   })
   // temporary have links toggle sign in dropdow
-  $('.temp-toggle-sign-in').on('click', () => {
-    $(window).scrollTop(0)
-    $('#sign-in-dropdown').addClass('show')
-    $('#sign-in-dropdown').attr('aria-expanded', 'true')
-    $('#sign-in-dropdown-target').addClass('show')
-  })
-  $('#landing-trailer-list').on('click', 'div div div a', () => {
-    $(window).scrollTop(0)
-    $('#sign-in-dropdown').addClass('show')
-    $('#sign-in-dropdown').attr('aria-expanded', 'true')
-    $('#sign-in-dropdown-target').addClass('show')
-  })
+  // $('.temp-toggle-sign-in').on('click', () => {
+  //   $(window).scrollTop(0)
+  //   event.stopImmediatePropagation()
+  //   $('#sign-in-dropdown').dropdown('toggle')
+  //   // $('#sign-in-dropdown-target').addClass('show')
+  // })
+  // $('#landing-trailer-list').on('click', 'div div div a.temp-toggle-sign-in', () => {
+  //   $(window).scrollTop(0)
+  //   event.stopImmediatePropagation()
+  //   $('#sign-in-dropdown').dropDown('toggle')
+  //   // $('#sign-in-dropdown').attr('aria-expanded', 'true')
+  //   // $('#sign-in-dropdown-target').addClass('show')
+  // })
+
   // show / save / reserve
   $('#flight-deck-main-trailer-list').on('click', 'div div div.mt-2 a', () => {
     $('#saveOrBookModal').modal('toggle')
