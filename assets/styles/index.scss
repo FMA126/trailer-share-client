@@ -56,6 +56,11 @@ footer {
   background-position: 80% 100%;
   background-attachment: fixed;
   height: 80vh !important;
+  @media (max-width: 600px) {
+      background-size: cover;
+      background-position: 90% 50%;
+      background-attachment: scroll;
+  }
 }
 
 // .jumboTop {
