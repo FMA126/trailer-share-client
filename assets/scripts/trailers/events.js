@@ -12,13 +12,25 @@ const showTrailerListOnIndex = event => {
 }
 
 const showATrailer = (event) => {
-  // console.log('hi')
+  console.log('hi from show a trailer events')
   event.preventDefault()
-  // api.deleteBook(event)
-  //   .then(res => {
-  //     onGetBooks(event)
-  //   })
-  //   .catch(ui.failure)
+  api.deleteBook(event)
+    .then(res => {
+      onGetBooks(event)
+    })
+    .catch(ui.failure)
+}
+
+const saveTrailer = (event) => {
+  console.log('hi from reserve trailer events')
+  event.preventDefault()
+}
+
+const reserveTrailer = (event) => {
+  console.log('hi from reserve trailer events')
+  event.preventDefault()
+  // api.onReserveTrailer()
+  //   .then()
 }
 
 const updateTrailer = (event) => {
@@ -55,7 +67,7 @@ const removeTrailer = (event) => {
 }
 
 const addHandlers = () => {
-  // shows trailers on signed out landing page
+  // shows trailers on signed out landing page and signed in page
   $(document).ready(() => {
     store.user = { token: '' }
     showTrailerListOnIndex()
@@ -103,6 +115,13 @@ const addHandlers = () => {
     $('#sign-in-dropdown').attr('aria-expanded', 'true')
     $('#sign-in-dropdown-target').addClass('show')
   })
+  // show / save / reserve
+  $('#flight-deck-main-trailer-list').on('click', 'div div div.mt-2 a', () => {
+    $('#saveOrBookModal').modal('toggle')
+  })
+
+  $('#saveTrailer').on('click', saveTrailer)
+  $('#reserveTrailer').on('click', reserveTrailer)
   $('#create-trailer-form').on('submit', createTrailer)
   $('#update-trailer-form').on('submit', updateTrailer)
   $('#removeTrailerButton').on('click', removeTrailer)

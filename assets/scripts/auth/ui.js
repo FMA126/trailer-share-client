@@ -65,18 +65,18 @@ const onSignUpFailure = responseData => {
 const onSignInSuccess = responseData => {
   $('form').trigger('reset')
   $(window).scrollTop(0)
-  if (!store.signInDev) {
-    $('#navbarTogglerSignedOut').collapse('hide')
-    $('#emailHelp2').removeClass('text-danger')
-    $('#emailHelp2').addClass('text-muted')
-    $('#emailHelp2').text("We'll never share your email with anyone else.")
-    $('#sign-out-nav').addClass('d-none')
-    $('#sign-in-nav').removeClass('d-none')
-    $('#sign-out-landing-page').addClass('d-none')
-    $('#signed-in-flight-deck-page').removeClass('d-none')
-  } else {
-    $('#dev-sign-in').addClass('text-success')
-  }
+  // if (!store.signInDev) {
+  $('#navbarTogglerSignedOut').collapse('hide')
+  $('#emailHelp2').removeClass('text-danger')
+  $('#emailHelp2').addClass('text-muted')
+  $('#emailHelp2').text("We'll never share your email with anyone else.")
+  $('#sign-out-nav').addClass('d-none')
+  $('#sign-in-nav').removeClass('d-none')
+  $('#sign-out-landing-page').addClass('d-none')
+  $('#signed-in-flight-deck-page').removeClass('d-none')
+  // } else {
+  //   $('#dev-sign-in').addClass('text-success')
+  // }
 }
 
 const onSignInFailure = responseData => {

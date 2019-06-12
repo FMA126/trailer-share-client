@@ -37,7 +37,7 @@ footer {
 // }
 
 .flight-deck-m-t-l-c {
-  height: 85vh;
+  height: 95vh;
   overflow-y: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
@@ -46,6 +46,21 @@ footer {
 .flight-deck-m-t-l-c::-webkit-scrollbar {
   width: 0 !important
 }
+
+.jumbolia {
+  width: 100%;
+  height: auto;
+  background-image: url('public/landing-page-jumbo-image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 80% 100%;
+  background-attachment: fixed;
+  height: 80vh !important;
+}
+
+// .jumboTop {
+//   height: 80vh !important;
+// }
 
 .hide {
   display: none;
@@ -63,11 +78,15 @@ footer {
   font-family: 'Alfa Slab One', cursive;
 }
 
-.search-main-trailer-list {
-  height: 85vh;
-  overflow-y: auto;
-  overflow: -moz-scrollbars-none;
-  -ms-overflow-style: none;
+// .search-main-trailer-list {
+//   height: 85vh;
+//   overflow-y: auto;
+//   overflow: -moz-scrollbars-none;
+//   -ms-overflow-style: none;
+// }
+
+.save-book-host {
+  font-family: 'Alfa Slab One', cursive;
 }
 
 .search-main-trailer-list::-webkit-scrollbar {
@@ -105,6 +124,10 @@ footer {
 // .switchSignInUp:hover {
 //   cursor: pointer;
 // }
+
+.toms-class {
+  border-radius: 50%;
+}
 
 .trailer-list-card > img {
   height: 15rem;

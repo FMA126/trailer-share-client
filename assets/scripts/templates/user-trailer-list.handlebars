@@ -3,8 +3,8 @@
 <li class="media trailer-list-media mb-4" id="update-from-linkers" data-id="{{trailer.id}}">
   <img src="public/trailers/showcase-images/{{trailer.picture}}trailer.jpg" class="mr-3" alt="picture of trailer">
   <div class="media-body">
-    <h5 class="mt-0 mb-1 text-center font-weight-bold">{{trailer.make}}</h5>
-    <p class="my-0 text-center">{{trailer.model}}</p>
+    <h5 class="mt-0 mb-1 text-center font-weight-bold">{{limit trailer.make 15}}</h5>
+    <p class="my-0 text-center">{{limit trailer.model 15}}</p>
     <hr class="mt-0">
     <div class="bubble-trailer-1">
       <div class="row mb-2">

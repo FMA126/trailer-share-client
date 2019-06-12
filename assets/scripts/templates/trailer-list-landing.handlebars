@@ -4,8 +4,8 @@
     <div class="card trailer-list-card">
       <img src="public/trailers/showcase-images/{{trailer.picture}}trailer.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{trailer.make}}</h5>
-        <p class="card-text">{{trailer.model}}</p>
+        <h5 class="card-title">{{limit trailer.make 15}}</h5>
+        <p class="card-text">{{limit trailer.model 15}}</p>
         <a href="#" data-id="{{trailer.id}}" class="btn btn-outline-info stretched-link temp-toggle-sign-in">Book this trailer</a>
       </div>
     </div>

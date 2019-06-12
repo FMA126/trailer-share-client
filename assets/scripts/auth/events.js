@@ -69,22 +69,22 @@ const onSignIn = (event, dev) => {
     .catch(ui.onSignInFailure)
 }
 
-const devSignIn = event => {
-  event.preventDefault()
-  store.signInDev = true
-  const reqData = {
-    'credentials': {
-      'email': 'a@b',
-      'password': '1'
-    }
-  }
-  api.signIn(reqData)
-    .then(responseData => {
-      store.user = responseData.user
-      ui.onSignInSuccess()
-    })
-    .catch(ui.onSignInFailure)
-}
+// const devSignIn = event => {
+//   event.preventDefault()
+//   store.signInDev = true
+//   const reqData = {
+//     'credentials': {
+//       'email': 'a@b',
+//       'password': '1'
+//     }
+//   }
+//   api.signIn(reqData)
+//     .then(responseData => {
+//       store.user = responseData.user
+//       ui.onSignInSuccess()
+//     })
+//     .catch(ui.onSignInFailure)
+// }
 
 const onSignOut = event => {
   event.preventDefault()
@@ -116,7 +116,7 @@ const addHandlers = () => {
   $('#change-password-form').on('submit', onChangePassword)
   $('#sign-out-action').on('click', onSignOut)
   // dev sign in
-  $('#dev-sign-in').on('click', devSignIn)
+  // $('#dev-sign-in').on('click', devSignIn)
 }
 
 module.exports = {
@@ -130,5 +130,5 @@ module.exports = {
   onSignOut,
   onChangePassword,
   addHandlers,
-  devSignIn
+  // devSignIn
 }

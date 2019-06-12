@@ -15,11 +15,6 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <!-- Button trigger modal -->
-      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Launch demo modal
-      </button> -->
-
       <!-- Modal -->
       <div class="modal fade" id="create-new-trailer" tabindex="-1" role="dialog" aria-labelledby="create-update-trailer-label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -135,12 +130,6 @@
                       <option>3</option>
                     </select>
                   </div>
-                  <div class="form-group invisible">
-                    <label for="picture-create-select">Picture</label>
-                    <select name="trailer[picture]" class="form-control" type="number" id="picture-create-select">
-                      <option id="picture-create-option"></option>
-                    </select>
-                  </div>
 
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -148,6 +137,12 @@
                       <span class="input-group-text">0.00</span>
                     </div>
                     <input name="trailer[price]" type="number" min="0" step=".01" class="form-control" id="priceCreateTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
+                  </div>
+                  <div class="form-group invisible" style="height: 0;">
+                    <label for="picture-create-select">Picture</label>
+                    <select name="trailer[picture]" class="form-control" type="number" id="picture-create-select">
+                      <option id="picture-create-option"></option>
+                    </select>
                   </div>
                   <hr class="my-2">
                   <small id="createHelp" class="form-text text-muted">
@@ -258,12 +253,6 @@
                       <option>3</option>
                     </select>
                   </div>
-                  <div class="form-group invisible">
-                    <label for="picture-update-select">Picture</label>
-                    <select name="trailer[picture]" class="form-control" id="picture-update-select">
-                      <option id="picture-update-option"></option>
-                    </select>
-                  </div>
 
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -271,6 +260,12 @@
                       <span class="input-group-text">0.00</span>
                     </div>
                     <input name="trailer[price]" type="number" min="0" step=".01" class="form-control" id="priceUpdateTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
+                  </div>
+                  <div class="form-group invisible" style="height: 0;">
+                    <label for="picture-update-select">Picture</label>
+                    <select name="trailer[picture]" class="form-control" id="picture-update-select">
+                      <option id="picture-update-option"></option>
+                    </select>
                   </div>
                   <hr class="my-2">
                   <small id="updateHelp" class="form-text text-muted">
@@ -303,10 +298,34 @@
           </div>
         </div>
       </div>
+      <!-- Modal -->
+      <div class="modal fade" id="saveOrBookModal" tabindex="-1"role="dialog" aria-labelledby="saveOrBookLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="saveOrBookLabel">Save or Book?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex flex-column align-items-center">
+                <h3 class="save-book-host text-center">Your Host</h3>
+                <img class="toms-class" src="public/tom.jpg" alt="tom from myspace">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-info">Save</button>
+              <button type="button" class="btn btn-primary">Reserve</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sign-out-nav">
-          <a class="navbar-brand text-bold" href="#">Trailer Share</a>
+          <a class="navbar-brand font-weight-bolder" href="#">Trailer Share</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedOut" aria-controls="navbarTogglerSignedOut" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -318,9 +337,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link temp-toggle-sign-in" href="#">Learn more</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" id="dev-sign-in">Dev Sign In</a>
               </li>
               <li class="nav-item dropdown" id="sign-in-dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</a>
@@ -430,11 +446,10 @@
       <main>
         <!-- Sign-out Landing Page  -->
         <section id="sign-out-landing-page">
-
-          <div class="jumbotron d-flex flex-column align-items-center">
+          <div class="jumbotron jumbolia d-flex flex-column align-items-center text-white bg-dark">
             <h1 class="display-3">The Best Trailers</h1>
-            <p class="lead">Book specialty trailers from local hosts</p>
-            <button class="btn btn-outline-primary btn-lg temp-toggle-sign-in">Learn more</button>
+            <p class="lead mb-sm-0 mb-lg-5">Book specialty trailers from local hosts</p>
+            <button class="btn btn-outline-success btn-lg temp-toggle-sign-in ">Learn more</button>
           </div>
           <div class="d-flex flex-column align-items-center">
             <div class="container">
@@ -448,7 +463,7 @@
             </div>
             <div class="container">
               <div class="media">
-                <i class="align-self-start mr-3 fas fa-headset fa-3x" alt="..."></i>
+                <i class="align-self-start mr-3 far fa-thumbs-up fa-3x" alt="..."></i>
                 <div class="media-body">
                   <h5 class="mt-0">Free cancellation</h5>
                   <p>Cancel for free up to 24 hours before your trip starts. Because life happens and it helps to be flexible when it does.</p>
@@ -457,7 +472,7 @@
             </div>
             <div class="container">
               <div class="media">
-                <i class="align-self-start mr-3 far fa-thumbs-up fa-3x" alt="..."></i>
+                <i class="align-self-start mr-3 fas fa-headset fa-3x" alt="..."></i>
                 <div class="media-body">
                   <h5 class="mt-0">24/7 customer support</h5>
                   <p>Rest easy knowing that everyone in the Trailer Share community is screened, and 24/7 customer support and roadside assistance are just a click away.</p>
@@ -493,22 +508,32 @@
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
                       <select class="custom-select custom-select mb-3">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option selected>City</option>
+                        <option value="Boston">Boston</option>
+                        <option value="LA">LA</option>
+                        <option value="Seatle">Seatle</option>
                       </select>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
+                      <select class="custom-select custom-select mb-3">
+                        <option selected>Price</option>
+                        <option value="Boston">Under $50 /day</option>
+                        <option value="LA">Under $100 /day</option>
+                        <option value="Seatle">Price is nothing</option>
+                      </select>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                      <select class="custom-select custom-select mb-3">
+                        <option selected>Trailer Type</option>
+                        <option value="Boston">Enclosed</option>
+                        <option value="LA">Flatbed</option>
+                        <option value="Seatle">Single Car</option>
+                      </select>
                     </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Tell us what your looking for">
+                    <button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Search</button>
                   </form>
                 </div>
               </nav>
@@ -519,7 +544,7 @@
               </ul>
             </div> -->
             <!-- flight deck trailer list -->
-            <div class="col-sm-12 col-md-12 col-lg-5 px-sm-1 px-lg-0 flight-deck-m-t-l-c">
+            <div class="col-sm-12 col-md-12 col-lg-5 px-sm-1 px-lg-0 flight-deck-m-t-l-c border border-dark">
               <div class="row" id="flight-deck-main-trailer-list">
 
               </div>
@@ -573,7 +598,7 @@
                   <div id="collapseThree" class="collapse user-trailer-list" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
                       <div>
-
+                        You have no saved trailers.
                       </div>
                     </div>
                   </div>
@@ -594,44 +619,44 @@
             <div class="row col-12">
               <ul class="nav flex-column col-sm-12 col-md-6 col-lg-4">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Active</a>
+                  <a class="nav-link disabled font-weight-bolder text-white" href="#" aria-disabled="true">Cities</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Boston</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link disabled" href="#" aria-disabled="true">LA</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
-              <ul class="nav flex-column col-sm-12 col-md-6 col-lg-4">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Seatle</a>
                 </li>
               </ul>
               <ul class="nav flex-column col-sm-12 col-md-6 col-lg-4">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Active</a>
+                  <a class="nav-link disabled font-weight-bolder text-white" href="#" aria-disabled="true">Careers</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Support</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Terms</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Connect</a>
+                </li>
+              </ul>
+              <ul class="nav flex-column col-sm-12 col-md-6 col-lg-4">
+                <li class="nav-item">
+                  <a class="nav-link disabled font-weight-bolder text-white" href="#" aria-disabled="true">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Future cities</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Meet the team</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Space Travel</a>
                 </li>
               </ul>
             </div>
