@@ -72,6 +72,18 @@ const addHandlers = () => {
   // create search state
   store.searchTheTrailers = new searchTrailerConstructor.TrailerSearchState(0, 0, 10000)
 
+  // toggle please sign in modal
+  $('.temp-toggle-sign-in').on('click', function () {
+    $('#pleaseSignIn').modal('toggle')
+  })
+  $('#landing-trailer-list').on('click', 'div div div a.temp-toggle-sign-in', () => {
+    // $(window).scrollTop(0)
+    // event.stopImmediatePropagation()
+    $('#pleaseSignIn').modal('toggle')
+    // $('#sign-in-dropdown').attr('aria-expanded', 'true')
+    // $('#sign-in-dropdown-target').addClass('show')
+  })
+
   // shows trailers owned by signed in user
   $('#user-trailer-list-heading').on('click', () => {
     const expanded = $('#user-trailer-button').attr('aria-expanded')
