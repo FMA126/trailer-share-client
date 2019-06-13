@@ -4,33 +4,26 @@ const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
+const searchTrailerConstructor = require('./trailer-search.js')
 
-const showTrailerListOnIndex = event => {
+const showTrailerListOnIndex = () => {
   api.onShowTrailerListOnIndex()
     .then(ui.onshowTrailerListOnIndexSuccess)
     .catch(ui.onshowTrailerListOnIndexFailure)
 }
 
-const showATrailer = (event) => {
-  console.log('hi from show a trailer events')
-  event.preventDefault()
-  api.deleteBook(event)
-    .then(res => {
-      onGetBooks(event)
-    })
-    .catch(ui.failure)
-}
-
 const saveTrailer = (event) => {
-  console.log('hi from reserve trailer events')
   event.preventDefault()
+  api.onSaveTrailer()
+    .then(ui.onSaveTrailerSuccess)
+    .catch(ui.onSaveTrailerFailure)
 }
 
 const reserveTrailer = (event) => {
-  console.log('hi from reserve trailer events')
   event.preventDefault()
-  // api.onReserveTrailer()
-  //   .then()
+  api.onReserveTrailer()
+    .then(ui.onReserveTrailerSuccess)
+    .catch(ui.onReserveTrailerFailure)
 }
 
 const updateTrailer = (event) => {
@@ -66,12 +59,19 @@ const removeTrailer = (event) => {
     })
 }
 
+const searchTrailer = (event) => {
+  showTrailerListOnIndex()
+}
+
 const addHandlers = () => {
   // shows trailers on signed out landing page and signed in page
   $(document).ready(() => {
     store.user = { token: '' }
     showTrailerListOnIndex()
   })
+  // create search state
+  store.searchTheTrailers = new searchTrailerConstructor.TrailerSearchState(0, 0, 10000)
+
   // shows trailers owned by signed in user
   $('#user-trailer-list-heading').on('click', () => {
     const expanded = $('#user-trailer-button').attr('aria-expanded')
@@ -151,14 +151,35 @@ const addHandlers = () => {
 
   // show / save / reserve
   $('#flight-deck-main-trailer-list').on('click', 'div div div.mt-2 a', () => {
+    const bookId = event.target.getAttribute('data-id')
     $('#saveOrBookModal').modal('toggle')
+    $('#saveTrailer').data('id', `${bookId}`)
+    $('#reserveTrailer').data('id', `${bookId}`)
   })
-
+  $('#saveTrailer').on('click', saveTrailer)
+  $('#bookTrailer').on('click', reserveTrailer)
+  // remove saved or reserved trailer
+  $('#reservedTrailersHere').on('click', 'li div div button.del-button', (event) => {
+    $('#reservedTrailersHere').html('You have no reserved trailers.')
+  })
+  $('#savedTrailersHere').on('click', 'li div div button.del-button', (event) => {
+    $('#savedTrailersHere').html('You have no reserved trailers.')
+  })
+  // CRUD
   $('#saveTrailer').on('click', saveTrailer)
   $('#reserveTrailer').on('click', reserveTrailer)
   $('#create-trailer-form').on('submit', createTrailer)
   $('#update-trailer-form').on('submit', updateTrailer)
   $('#removeTrailerButton').on('click', removeTrailer)
+
+  // Search
+  // $(`#selectSearchHitchType`).on('click', 'option', function () { console.log($(this).text()) })
+  $(document).on('click', '#selectSearchHitchType', function () { store.searchTheTrailers.setHitchType(event.target.value) })
+  $(document).on('click', '#selectSearchTrailerType', function () { store.searchTheTrailers.setTrailerType(event.target.value) })
+  $(document).on('click', '#selectSearchPrice', function () { store.searchTheTrailers.setPrice(event.target.value) })
+
+  // search button
+  $('#searchButton').on('click', searchTrailer)
 }
 
 module.exports = {
