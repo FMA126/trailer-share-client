@@ -99,6 +99,7 @@ const addHandlers = () => {
   })
   // toogles modal to confirm if user wants to delete a trailer
   $('#user-trailer-list-body').on('click', 'li div div button.del-button', (event) => {
+    console.log('delete trailer')
     const deleteButtonDataId = event.target.getAttribute('data-id')
 
     $('#removeTrailerConfirmModal').modal('toggle')
@@ -146,20 +147,6 @@ const addHandlers = () => {
     $('#axelsUpdate').val(axels)
     $('#priceUpdateTrailer').val(price)
   })
-  // temporary have links toggle sign in dropdow
-  // $('.temp-toggle-sign-in').on('click', () => {
-  //   $(window).scrollTop(0)
-  //   event.stopImmediatePropagation()
-  //   $('#sign-in-dropdown').dropdown('toggle')
-  //   // $('#sign-in-dropdown-target').addClass('show')
-  // })
-  // $('#landing-trailer-list').on('click', 'div div div a.temp-toggle-sign-in', () => {
-  //   $(window).scrollTop(0)
-  //   event.stopImmediatePropagation()
-  //   $('#sign-in-dropdown').dropDown('toggle')
-  //   // $('#sign-in-dropdown').attr('aria-expanded', 'true')
-  //   // $('#sign-in-dropdown-target').addClass('show')
-  // })
 
   // show / save / reserve
   $('#flight-deck-main-trailer-list').on('click', 'div div div.mt-2 a', () => {
