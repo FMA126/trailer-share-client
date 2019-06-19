@@ -72,8 +72,12 @@ const onSignInSuccess = responseData => {
   $('#emailHelp2').text("We'll never share your email with anyone else.")
   $('#sign-out-nav').addClass('d-none')
   $('#sign-in-nav').removeClass('d-none')
-  $('#sign-out-landing-page').addClass('d-none')
-  $('#signed-in-flight-deck-page').removeClass('d-none')
+  $('#spinnerModal').modal('toggle')
+  setTimeout(() => {
+    $('#spinnerModal').modal('toggle')
+    $('#sign-out-landing-page').addClass('d-none')
+    $('#signed-in-flight-deck-page').removeClass('d-none')
+  }, 2000)
   // } else {
   //   $('#dev-sign-in').addClass('text-success')
   // }
@@ -105,11 +109,22 @@ const onSignOutFailure = responseData => {
 const onChangePasswordSuccess = () => {
   $(window).scrollTop(0)
   $('form').trigger('reset')
-  $('#change-password-form-container').collapse('hide')
+  $('#passwordHelp').removeClass('invisible').addClass('visible', 'text-success')
+  setTimeout(() => {
+    $('#change-password-form-container').collapse('hide')
+    $('#passwordHelp').removeClass('visible').addClass('invisible')
+  }, 1500)
 }
 
 const onChangePasswordFailure = responseData => {
   $(window).scrollTop(0)
+  $('form').trigger('reset')
+  $('#passwordHelp').removeClass('invisible').addClass('visible').text('Failed to change password')
+  setTimeout(() => {
+    $('#passwordHelp').removeClass('visible')
+    $('#passwordHelp').addClass('invisible')
+    $('#passwordHelp').text('Password changed successfully!')
+  }, 2000)
 }
 
 module.exports = {

@@ -129,6 +129,6 @@ module.exports = {
   onSignIn,
   onSignOut,
   onChangePassword,
-  addHandlers,
+  addHandlers
   // devSignIn
 }
