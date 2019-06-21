@@ -16,6 +16,7 @@ const signUp = formData => {
 const signIn = formData => {
   // console.log('from api signIn')
   // console.log(formData)
+  $('#spinnerModal').modal('toggle')
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',

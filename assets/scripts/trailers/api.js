@@ -48,10 +48,25 @@ const onCreateTrailer = formData => {
   })
 }
 
-const onSaveTrailer = () => {
+const onCreateFavoriteTrailer = () => {
   const id = $(event.target).data('id')
   return $.ajax({
-    url: config.apiUrl + '/trailers/' + id,
+    url: config.apiUrl + '/favorites',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'favorite': {
+        'trailer_id': id
+      }
+    }
+  })
+}
+
+const onIndexFavoriteTrailer = () => {
+  return $.ajax({
+    url: config.apiUrl + '/favorites',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -75,6 +90,7 @@ module.exports = {
   deleteTrailer,
   onUpdateTrailer,
   onCreateTrailer,
-  onSaveTrailer,
+  onCreateFavoriteTrailer,
+  onIndexFavoriteTrailer,
   onReserveTrailer
 }
