@@ -347,7 +347,7 @@
       </div>
 
       <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="sign-out-nav">
+        <nav class="navbar navbar-expand-md navbar-light bg-light" id="sign-out-nav">
           <a class="navbar-brand font-weight-bolder" href="#">Trailer Share</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedOut" aria-controls="navbarTogglerSignedOut" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -363,7 +363,7 @@
               </li>
               <li class="nav-item dropdown" id="sign-in-dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</a>
-                <div class="dropdown-menu dropdown-menu-lg-right" id="sign-in-dropdown-target">
+                <div class="dropdown-menu dropdown-menu-md-right" id="sign-in-dropdown-target">
                   <div id="sign-in-form-container">
                     <form class="px-4 py-3" id="sign-in-form">
                       <div class="form-group">
@@ -418,7 +418,7 @@
 
           </div>
         </nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sign-in-nav d-none" id="sign-in-nav">
+        <nav class="navbar navbar-expand-md navbar-light bg-light sign-in-nav d-none" id="sign-in-nav">
           <a class="navbar-brand" href="#">Trailer Share</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedIn" aria-controls="navbarTogglerSignedIn" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -431,7 +431,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Change password</a>
-                <div class="dropdown-menu dropdown-menu-lg-right" id="change-password-form-container">
+                <div class="dropdown-menu dropdown-menu-md-right" id="change-password-form-container">
 
                     <form class="px-4 py-3" id="change-password-form">
                       <div class="form-group">
@@ -523,12 +523,12 @@
         <!-- Signed-in Landing Page -->
         <section class="container-fluid d-none" id="signed-in-flight-deck-page">
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-3 px-sm-1 px-lg-0">
-              <nav class="navbar navbar-light bg-light search-main-trailer-list" id="signed-in-nav-search">
-                <a class="navbar-brand " href="#">Search One At A time</a>
-                <button id="navbarTogglerSearchButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSearch" aria-controls="navbarTogglerSearch" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="col-sm-12 col-md-3 col-lg-3 px-sm-1 px-lg-0">
+              <nav class="navbar navbar-dark bg-dark search-main-trailer-list" id="signed-in-nav-search">
+                <a class="navbar-brand accordion-label" href="#">Best Local Trailers</a>
+                <!-- <button id="navbarTogglerSearchButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSearch" aria-controls="navbarTogglerSearch" aria-expanded="false" aria-label="Toggle navigation">
                   <i class="fas fa-search"></i>
-                </button>
+                </button> -->
 
                 <!-- <div class="collapse navbar-collapse" id="navbarTogglerSearch">
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -577,18 +577,18 @@
               </ul>
             </div> -->
             <!-- flight deck trailer list -->
-            <div class="col-sm-12 col-md-12 col-lg-5 px-sm-1 px-lg-0 flight-deck-m-t-l-c border border-dark">
+            <div class="col-sm-12 col-md-5 col-lg-5 px-sm-1 px-lg-0 flight-deck-m-t-l-c border border-dark">
               <div class="row" id="flight-deck-main-trailer-list">
 
               </div>
             </div>
 
-            <div class="col-sm-12 col-md-12 col-lg-4 px-sm-1 px-lg-0">
+            <div class="col-sm-12 col-md-4 col-lg-4 px-sm-1 px-lg-0">
               <div class="accordion" id="accordionExample">
                 <div class="card">
-                  <div class="card-header" id="user-trailer-list-heading">
+                  <div class="card-header bg-dark" id="user-trailer-list-heading">
                     <h2 class="mb-0">
-                      <button id="user-trailer-button" class="btn btn-link btn-lg text-decoration-none text-dark accordion-label" type="button" data-toggle="collapse" data-target="#user-trailer-list" aria-expanded="false" aria-controls="user-trailer-list">
+                      <button id="user-trailer-button" class="btn btn-link btn-lg text-decoration-none text-white accordion-label" type="button" data-toggle="collapse" data-target="#user-trailer-list" aria-expanded="false" aria-controls="user-trailer-list">
                         Your Trailers
                       </button>
                     </h2>
