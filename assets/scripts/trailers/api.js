@@ -14,7 +14,7 @@ const onShowTrailerListOnIndex = () => {
 }
 
 const deleteTrailer = () => {
-  console.log('hi delete api', event.target)
+  // console.log('hi delete api', event.target)
   const id = $(event.target).data('id')
   return $.ajax({
     url: config.apiUrl + '/trailers/' + id,
