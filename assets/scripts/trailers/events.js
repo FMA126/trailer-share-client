@@ -12,19 +12,30 @@ const showTrailerListOnIndex = () => {
     .catch(ui.onshowTrailerListOnIndexFailure)
 }
 
-const saveTrailer = (event) => {
-  event.preventDefault()
-  api.onSaveTrailer()
-    .then(ui.onSaveTrailerSuccess)
-    .catch(ui.onSaveTrailerFailure)
-}
+// const favoriteTrailer = (event) => {
+//   event.preventDefault()
+//   api.onCreateFavoriteTrailer()
+//     .then(ui.onCreateFavoriteTrailerSuccess)
+//     .catch(ui.onCreateFavoriteTrailerFailure)
+//     .then(res => {
+//       console.log(res)
+//       return res
+//     })
+//   api.onIndexFavoriteTrailer()
+//     .then(res => {
+//       console.log(res)
+//       return res
+//     })
+//     .then(ui.onIndexFavoriteTrailerSuccess)
+//     .catch(ui.onIndexFavoriteTrailerFailure)
+// }
 
-const reserveTrailer = (event) => {
-  event.preventDefault()
-  api.onReserveTrailer()
-    .then(ui.onReserveTrailerSuccess)
-    .catch(ui.onReserveTrailerFailure)
-}
+// const reserveTrailer = (event) => {
+//   event.preventDefault()
+//   api.onReserveTrailer()
+//     .then(ui.onReserveTrailerSuccess)
+//     .catch(ui.onReserveTrailerFailure)
+// }
 
 const updateTrailer = (event) => {
   event.preventDefault()
@@ -70,7 +81,7 @@ const addHandlers = () => {
     showTrailerListOnIndex()
   })
   // create search state
-  store.searchTheTrailers = new searchTrailerConstructor.TrailerSearchState(0, 0, 10000)
+  store.searchTheTrailers = new searchTrailerConstructor.TrailerSearchState(false, false, 10000)
 
   // toggle please sign in modal
   $('.temp-toggle-sign-in').on('click', function () {
@@ -149,24 +160,24 @@ const addHandlers = () => {
   })
 
   // show / save / reserve
-  $('#flight-deck-main-trailer-list').on('click', 'div div div.mt-2 a', () => {
-    const bookId = event.target.getAttribute('data-id')
-    $('#saveOrBookModal').modal('toggle')
-    $('#saveTrailer').data('id', `${bookId}`)
-    $('#reserveTrailer').data('id', `${bookId}`)
-  })
-  $('#saveTrailer').on('click', saveTrailer)
-  $('#bookTrailer').on('click', reserveTrailer)
+  // $('#flight-deck-main-trailer-list').on('click', 'div div div.mt-2 a', () => {
+  //   const bookId = event.target.getAttribute('data-id')
+  //   $('#saveOrBookModal').modal('toggle')
+  //   $('#saveTrailer').data('id', `${bookId}`)
+  //   $('#reserveTrailer').data('id', `${bookId}`)
+  // })
+  // $('#saveTrailer').on('click', favoriteTrailer)
+  // $('#bookTrailer').on('click', reserveTrailer)
   // remove saved or reserved trailer
-  $('#reservedTrailersHere').on('click', 'li div div button.del-button', (event) => {
-    $('#reservedTrailersHere').html('You have no reserved trailers.')
-  })
-  $('#savedTrailersHere').on('click', 'li div div button.del-button', (event) => {
-    $('#savedTrailersHere').html('You have no reserved trailers.')
-  })
+  // $('#reservedTrailersHere').on('click', 'li div div button.del-button', (event) => {
+  //   $('#reservedTrailersHere').html('You have no reserved trailers.')
+  // })
+  // $('#savedTrailersHere').on('click', 'li div div button.del-button', (event) => {
+  //   $('#savedTrailersHere').html('You have no reserved trailers.')
+  // })
   // CRUD
-  $('#saveTrailer').on('click', saveTrailer)
-  $('#reserveTrailer').on('click', reserveTrailer)
+  // $('#saveTrailer').on('click', favoriteTrailer)
+  // $('#reserveTrailer').on('click', reserveTrailer)
   $('#create-trailer-form').on('submit', createTrailer)
   $('#update-trailer-form').on('submit', updateTrailer)
   $('#removeTrailerButton').on('click', removeTrailer)

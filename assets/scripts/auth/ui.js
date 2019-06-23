@@ -72,12 +72,24 @@ const onSignInSuccess = responseData => {
   $('#emailHelp2').text("We'll never share your email with anyone else.")
   $('#sign-out-nav').addClass('d-none')
   $('#sign-in-nav').removeClass('d-none')
-  $('#spinnerModal').modal('toggle')
+  // $('#spinnerModal').modal('toggle')
+  // transition
+  // $('#sign-out-landing-page').addClass('d-none')
+  // $('#signed-in-flight-deck-page').removeClass('d-none')
+  // $('#spinnerModal').modal('toggle')
   setTimeout(() => {
     $('#spinnerModal').modal('toggle')
     $('#sign-out-landing-page').addClass('d-none')
     $('#signed-in-flight-deck-page').removeClass('d-none')
-  }, 2000)
+  }, 800)
+  setTimeout(() => {
+    $('#user-trailer-button').trigger('click')
+  }, 800)
+  // setTimeout(() => {
+  //   $('#spinnerModal').modal('toggle')
+  //   $('#sign-out-landing-page').addClass('d-none')
+  //   $('#signed-in-flight-deck-page').removeClass('d-none')
+  // }, 2000)
   // } else {
   //   $('#dev-sign-in').addClass('text-success')
   // }
@@ -86,6 +98,11 @@ const onSignInSuccess = responseData => {
 const onSignInFailure = responseData => {
   $(window).scrollTop(0)
   $('form').trigger('reset')
+  setTimeout(() => {
+    $('#spinnerModal').modal('toggle')
+    // $('#sign-out-landing-page').addClass('d-none')
+    // $('#signed-in-flight-deck-page').removeClass('d-none')
+  }, 800)
   $('#emailHelp2').text('Email already exists or passwords do not match')
   $('#emailHelp2').addClass('text-danger')
   $('#emailHelp2').removeClass('text-muted')

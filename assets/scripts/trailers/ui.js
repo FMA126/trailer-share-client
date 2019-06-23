@@ -3,8 +3,8 @@
 const trailerSignedOutList = require('../templates/trailer-list-landing.handlebars')
 const trailerSignedInList = require('../templates/trailer-list-flight-deck.handlebars')
 const trailerUserList = require('../templates/user-trailer-list.handlebars')
-const trailerSavedList = require('../templates/save-trailer.handlebars')
-const trailerReservedList = require('../templates/reserve-trailer.handlebars')
+// const trailerSavedList = require('../templates/save-trailer.handlebars')
+// const trailerReservedList = require('../templates/reserve-trailer.handlebars')
 const store = require('../store')
 
 const onshowTrailerListOnIndexSuccess = (responseData) => {
@@ -24,12 +24,12 @@ const onshowTrailerListOnIndexSuccess = (responseData) => {
 
   const isUserHasTrailer = responseData.trailers.filter(el => el.editable).length
 
-  if (store.searchTheTrailers.getHitchType() === '') {
-    store.searchTheTrailers.setHitchType(false)
-  }
-  if (store.searchTheTrailers.getTrailerType() === '') {
-    store.searchTheTrailers.setTrailerType(false)
-  }
+  // if (store.searchTheTrailers.getHitchType() === '') {
+  //   store.searchTheTrailers.setHitchType(false)
+  // }
+  // if (store.searchTheTrailers.getTrailerType() === '') {
+  //   store.searchTheTrailers.setTrailerType(false)
+  // }
 
   if (store.searchTheTrailers.getHitchType() || store.searchTheTrailers.getTrailerType() || parseFloat(store.searchTheTrailers.getPrice())) {
     $('#flight-deck-main-trailer-list').html(searchTrailerType.concat(searchHitchType).concat(searchPrice))
@@ -72,25 +72,29 @@ const onRemoveTrailerSuccess = (responseData) => {
   $('#removeTrailerConfirmModal').modal('toggle')
 }
 
-const onSaveTrailerSuccess = (responseData) => {
-  // $('#saveTrailer').modal('toggle')
-  const savedList = trailerSavedList({ trailer: responseData.trailer })
-  $('#savedTrailersHere').html(savedList)
-}
+// const onIndexFavoriteTrailerSuccess = (responseData) => {
+//   // $('#saveTrailer').modal('toggle')
+//   store.favoriteTrailerIdList = []
+//   responseData.favorites.forEach((fav) => {
+//     store.favoriteTrailerIdList.push(fav.trailer_id)
+//   })
+//   console.log(store.favoriteTrailerIdList)
+//   // $('#savedTrailersHere').html(savedList)
+// }
 
-const onSaveTrailerFailure = (responseData) => {
-  // console.log('oh no from save ui')
-}
+// const onIndexFavoriteTrailerFailure = (responseData) => {
+//   // console.log('oh no from save ui')
+// }
 
-const onReserveTrailerSuccess = (responseData) => {
-  // $('#reserveTrailer').modal('toggle')
-  const reservedList = trailerReservedList({ trailer: responseData.trailer })
-  $('#reservedTrailersHere').html(reservedList)
-}
+// const onReserveTrailerSuccess = (responseData) => {
+//   // $('#reserveTrailer').modal('toggle')
+//   // const reservedList = trailerReservedList({ trailers: responseData.trailers.filter((el) => ) })
+//   // $('#reservedTrailersHere').html(reservedList)
+// }
 
-const onReserveTrailerFailure = (responseData) => {
-  // console.log('oh no from reserve ui')
-}
+// const onReserveTrailerFailure = (responseData) => {
+//   // console.log('oh no from reserve ui')
+// }
 
 module.exports = {
   onshowTrailerListOnIndexSuccess,
@@ -99,9 +103,9 @@ module.exports = {
   onCreateTrailerSuccess,
   onUpdateTrailerSuccess,
   onUpdateTrailerFailure,
-  onRemoveTrailerSuccess,
-  onSaveTrailerSuccess,
-  onReserveTrailerSuccess,
-  onSaveTrailerFailure,
-  onReserveTrailerFailure
+  onRemoveTrailerSuccess
+  // onIndexFavoriteTrailerSuccess,
+  // onReserveTrailerSuccess,
+  // onIndexFavoriteTrailerFailure,
+  // onReserveTrailerFailure
 }
