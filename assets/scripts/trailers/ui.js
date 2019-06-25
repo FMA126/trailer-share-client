@@ -72,29 +72,29 @@ const onRemoveTrailerSuccess = (responseData) => {
   $('#removeTrailerConfirmModal').modal('toggle')
 }
 
-// const onIndexFavoriteTrailerSuccess = (responseData) => {
-//   // $('#saveTrailer').modal('toggle')
-//   store.favoriteTrailerIdList = []
-//   responseData.favorites.forEach((fav) => {
-//     store.favoriteTrailerIdList.push(fav.trailer_id)
-//   })
-//   console.log(store.favoriteTrailerIdList)
-//   // $('#savedTrailersHere').html(savedList)
-// }
+const onIndexFavoriteTrailerSuccess = (responseData) => {
+  // $('#saveTrailer').modal('toggle')
+  store.favoriteTrailerIdList = []
+  responseData.favorites.forEach((fav) => {
+    store.favoriteTrailerIdList.push(fav.trailer_id)
+  })
+  // console.log(store.favoriteTrailerIdList)
+  // $('#savedTrailersHere').html(savedList)
+}
 
-// const onIndexFavoriteTrailerFailure = (responseData) => {
-//   // console.log('oh no from save ui')
-// }
+const onIndexFavoriteTrailerFailure = (responseData) => {
+  // console.log('oh no from save ui')
+}
 
-// const onReserveTrailerSuccess = (responseData) => {
-//   // $('#reserveTrailer').modal('toggle')
-//   // const reservedList = trailerReservedList({ trailers: responseData.trailers.filter((el) => ) })
-//   // $('#reservedTrailersHere').html(reservedList)
-// }
+const onReserveTrailerSuccess = (responseData) => {
+  // $('#reserveTrailer').modal('toggle')
+  // const reservedList = trailerReservedList({ trailers: responseData.trailers.filter((el) => ) })
+  // $('#reservedTrailersHere').html(reservedList)
+}
 
-// const onReserveTrailerFailure = (responseData) => {
-//   // console.log('oh no from reserve ui')
-// }
+const onReserveTrailerFailure = (responseData) => {
+  // console.log('oh no from reserve ui')
+}
 
 module.exports = {
   onshowTrailerListOnIndexSuccess,
@@ -103,9 +103,9 @@ module.exports = {
   onCreateTrailerSuccess,
   onUpdateTrailerSuccess,
   onUpdateTrailerFailure,
-  onRemoveTrailerSuccess
-  // onIndexFavoriteTrailerSuccess,
-  // onReserveTrailerSuccess,
-  // onIndexFavoriteTrailerFailure,
-  // onReserveTrailerFailure
+  onRemoveTrailerSuccess,
+  onIndexFavoriteTrailerSuccess,
+  onReserveTrailerSuccess,
+  onIndexFavoriteTrailerFailure,
+  onReserveTrailerFailure
 }
