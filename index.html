@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Trailer Share</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <!-- Modal -->
+      <div class="modal fade" id="create-new-trailer" tabindex="-1" role="dialog" aria-labelledby="create-update-trailer-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="create-update-trailer-label">Trailer</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="create-new-form-container">
+                <form class="px-4 py-3" id="create-trailer-form">
+                  <div class="form-group">
+                    <label for="createMake">Make</label>
+                    <input name="trailer[make]" type="text" class="form-control" id="createMake" placeholder="HaulMark">
+                  </div>
+                  <div class="form-group">
+                    <label for="createModel">Model</label>
+                    <input name="trailer[model]" type="text" class="form-control" id="createModel" placeholder="Deluxe Cargo">
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerCreateYear">Year</label>
+                    <select name="trailer[year]" class="form-control" id="trailerCreateYear">
+                      <option>2019</option>
+                      <option>2018</option>
+                      <option>2017</option>
+                      <option>2016</option>
+                      <option>2015</option>
+                      <option>2014</option>
+                      <option>2013</option>
+                      <option>2012</option>
+                      <option>2011</option>
+                      <option>2010</option>
+                      <option>2009</option>
+                      <option>2008</option>
+                      <option>2007</option>
+                      <option>2006</option>
+                      <option>2005</option>
+                      <option>2004</option>
+                      <option>2003</option>
+                      <option>2001</option>
+                      <option>2002</option>
+                      <option>2001</option>
+                      <option>2000</option>
+                      <option>1999</option>
+                      <option>1998</option>
+                      <option>1997</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerCreateType">Trailer Type</label>
+                    <select name="trailer[trailer_type]" class="form-control" id="trailerCreateType">
+                      <option>Single Car</option>
+                      <option>Multi Car</option>
+                      <option>Flat Bed</option>
+                      <option>Open</option>
+                      <option>Enclosed</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="hitchCreateType">Hitch Type</label>
+                    <select name="trailer[hitch_type]" class="form-control" id="hitchCreateType">
+                      <option>Class 1</option>
+                      <option>Class 2</option>
+                      <option>Class 3</option>
+                      <option>Class 4</option>
+                      <option>Class 5</option>
+                      <option>5th Wheel</option>
+                      <option>Gooseneck</option>
+                      <option>Pintle</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerCreateLength">Trailer Length</label>
+                    <select name="trailer[length]" class="form-control" id="trailerCreateLength">
+                      <option>5 ft</option>
+                      <option>6 ft</option>
+                      <option>7 ft</option>
+                      <option>8 ft</option>
+                      <option>9 ft</option>
+                      <option>10 ft</option>
+                      <option>12 ft</option>
+                      <option>15 ft</option>
+                      <option>17 ft</option>
+                      <option>20 ft</option>
+                      <option>25 ft</option>
+                      <option>30 ft</option>
+                      <option>35 ft</option>
+                      <option>40 ft</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="gvwrCreate">Gross Vehicle Weight Rating (Trailer)</label>
+                    <select name="trailer[gvwr]" class="form-control" id="gvwrCreate">
+                      <option>1500</option>
+                      <option>2000</option>
+                      <option>3000</option>
+                      <option>6000</option>
+                      <option>9000</option>
+                      <option>12000</option>
+                      <option>15000</option>
+                      <option>20000</option>
+                      <option>25000</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="axelsCreate">Number of Axels</label>
+                    <select name="trailer[axels]" class="form-control" type="number" id="axelsCreate">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                      <span class="input-group-text">0.00</span>
+                    </div>
+                    <input name="trailer[price]" type="number" min="0" min="10000" step=".01" class="form-control" id="priceCreateTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
+                  </div>
+                  <div class="form-group invisible" style="height: 0;">
+                    <label for="picture-create-select">Picture</label>
+                    <select name="trailer[picture]" class="form-control" type="number" id="picture-create-select">
+                      <option id="picture-create-option"></option>
+                    </select>
+                  </div>
+                  <hr class="my-2">
+                  <small id="createHelp" class="form-text text-muted">
+                    Members will be stoked to rent from you!
+                  </small>
+                  <button type="submit" class="btn btn-primary">List trailer</button>
+                </form>
+                <form class="px-4 py-3 d-none" id="update-trailer-form">
+                  <div class="form-group">
+                    <label for="updateMake">Make</label>
+                    <input name="trailer[make]" type="text" class="form-control" id="updateMake" placeholder="HaulMark">
+                  </div>
+                  <div class="form-group">
+                    <label for="updateModel">Model</label>
+                    <input name="trailer[model]" type="text" class="form-control" id="updateModel" placeholder="Deluxe Cargo">
+                  </div>
+                  <div class="form-group">
+                    <label for="updateYear">Year</label>
+                    <select name="trailer[year]" class="form-control" id="updateYear">
+                      <option>2019</option>
+                      <option>2018</option>
+                      <option>2017</option>
+                      <option>2016</option>
+                      <option>2015</option>
+                      <option>2014</option>
+                      <option>2013</option>
+                      <option>2012</option>
+                      <option>2011</option>
+                      <option>2010</option>
+                      <option>2009</option>
+                      <option>2008</option>
+                      <option>2007</option>
+                      <option>2006</option>
+                      <option>2005</option>
+                      <option>2004</option>
+                      <option>2003</option>
+                      <option>2001</option>
+                      <option>2002</option>
+                      <option>2001</option>
+                      <option>2000</option>
+                      <option>1999</option>
+                      <option>1998</option>
+                      <option>1997</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerUpdateType">Trailer Type</label>
+                    <select name="trailer[trailer_type]" class="form-control" id="trailerUpdateType">
+                      <option>Single Car</option>
+                      <option>Multi Car</option>
+                      <option>Flat Bed</option>
+                      <option>Open</option>
+                      <option>Enclosed</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="hitchUpdateType">Hitch Type</label>
+                    <select name="trailer[hitch_type]" class="form-control" id="hitchUpdateType">
+                      <option>Class 1</option>
+                      <option>Class 2</option>
+                      <option>Class 3</option>
+                      <option>Class 4</option>
+                      <option>Class 5</option>
+                      <option>5th Wheel</option>
+                      <option>Gooseneck</option>
+                      <option>Pintle</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="trailerUpdateLength">Trailer Length</label>
+                    <select name="trailer[length]" class="form-control" id="trailerUpdateLength">
+                      <option>5 ft</option>
+                      <option>6 ft</option>
+                      <option>7 ft</option>
+                      <option>8 ft</option>
+                      <option>9 ft</option>
+                      <option>10 ft</option>
+                      <option>12 ft</option>
+                      <option>15 ft</option>
+                      <option>17 ft</option>
+                      <option>20 ft</option>
+                      <option>25 ft</option>
+                      <option>30 ft</option>
+                      <option>35 ft</option>
+                      <option>40 ft</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="gvwrUpdate">Gross Vehicle Weight Rating (Trailer)</label>
+                    <select name="trailer[gvwr]" class="form-control" id="gvwrUpdate">
+                      <option>1500</option>
+                      <option>2000</option>
+                      <option>3000</option>
+                      <option>6000</option>
+                      <option>9000</option>
+                      <option>12000</option>
+                      <option>15000</option>
+                      <option>20000</option>
+                      <option>25000</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="axelsUpdate">Number of Axels</label>
+                    <select name="trailer[axels]" class="form-control" id="axelsUpdate">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                      <span class="input-group-text">0.00</span>
+                    </div>
+                    <input name="trailer[price]" type="number" min="0" max="10000" step=".01" class="form-control" id="priceUpdateTrailer" placeholder="Rental price / day (example $49.95)" aria-label="Dollar amount (with dot and two decimal places)">
+                  </div>
+                  <hr class="my-2">
+                  <small id="updateHelp" class="form-text text-muted">
+                    Members will be stoked to rent from you!
+                  </small>
+                  <button type="submit" class="btn btn-primary">List trailer</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="pleaseSignIn" tabindex="-1" role="dialog" aria-labelledby="pleaseSignInLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="pleaseSignInLabel">Trailer Share</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Please sign in to learn more.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  modal -->
+      <div class="modal fade" id="removeTrailerConfirmModal" tabindex="-1" role="dialog" aria-labelledby="removeTrailerConfirmLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="removeTrailerConfirmLabel">Remove Trailer</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to permanently remove this trailer? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger" id="removeTrailerButton">Remove trailer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="saveOrBookModal" tabindex="-1"role="dialog" aria-labelledby="saveOrBookLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="saveOrBookLabel">Save or Book?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex flex-column align-items-center">
+                <h3 class="save-book-host text-center">Your Host</h3>
+                <img class="toms-class" src="public/tom.jpg" alt="tom from myspace">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-info" id="saveTrailer" data-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-primary" id="reserveTrailer" data-dismiss="modal">Reserve</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade spinna" id="spinnerModal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-center">
+          <div class="modal-content d-flex justify-content-center align-items-center" style="width: 40px">
+            <div class="spinna">
+              <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light" id="sign-out-nav">
+          <a class="navbar-brand font-weight-bolder" href="#">Trailer Share</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedOut" aria-controls="navbarTogglerSignedOut" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerSignedOut">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link temp-toggle-sign-in" href="#">List your trailer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link temp-toggle-sign-in" href="#">Learn more</a>
+              </li>
+              <li class="nav-item dropdown" id="sign-in-dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</a>
+                <div class="dropdown-menu dropdown-menu-md-right" id="sign-in-dropdown-target">
+                  <div id="sign-in-form-container">
+                    <form class="px-4 py-3" id="sign-in-form">
+                      <div class="form-group">
+                        <label for="emailSignIn">Email address</label>
+                        <input name="credentials[email]" type="email" class="form-control" id="emailSignIn" placeholder="email@example.com" autocomplete="username">
+                      </div>
+                      <small id="emailHelp2" class="form-text text-muted">
+                        We'll never share your email with anyone else.
+                      </small>
+                      <div class="form-group">
+                        <label for="passwordSignIn">Password</label>
+                        <input name="credentials[password]" type="password" class="form-control" id="passwordSignIn" placeholder="Password" autocomplete="current-password">
+                      </div>
+                      <div class="form-group">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign in</button>
+                      <hr class="my-2">
+                      <span class="sign-switch" id="switchToSignUp">
+                        New around here?<span class="switchSignInUp ml-2">Sign up</span>
+                      </span>
+                    </form>
+                  </div>
+                  <div class="d-none" id="sign-up-form-container">
+                    <form class="px-4 py-3" id="sign-up-form">
+                      <div class="form-group">
+                        <label for="emailSignUp">Email address</label>
+                        <input name="credentials[email]" type="email" class="form-control" id="emailSignUp" placeholder="email@example.com" autocomplete="username">
+                      </div>
+                      <small id="emailHelp1" class="form-text text-muted">
+                        We'll never share your email with anyone else.
+                      </small>
+                      <div class="form-group">
+                        <label for="passwordSignUp">Password</label>
+                        <input name="credentials[password]" type="password" class="form-control" id="passwordSignUp" placeholder="Password" autocomplete="current-password">
+                      </div>
+                      <div class="form-group">
+                        <label for="passwordConfirmationSignUp">Confirm Password</label>
+                        <input name="credentials[password_confirmation]" type="password" class="form-control" id="passwordConfirmationSignUp" placeholder="Confirm password" autocomplete="new-password">
+                      </div>
+                      <div class="form-group">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign up</button>
+                      <hr class="my-2">
+                      <span class="sign-switch" id="switchToSignIn">
+                        Already a member?<span class="switchSignInUp ml-2 mr-2">Sign in</span>
+                      </span>
+                    </form>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+        <nav class="navbar navbar-expand-md navbar-light bg-light sign-in-nav d-none" id="sign-in-nav">
+          <a class="navbar-brand" href="#">Trailer Share</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSignedIn" aria-controls="navbarTogglerSignedIn" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerSignedIn">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#create-new-trailer">List your trailer</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Change password</a>
+                <div class="dropdown-menu dropdown-menu-md-right" id="change-password-form-container">
+
+                    <form class="px-4 py-3" id="change-password-form">
+                      <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input name="passwords[old]" type="password" class="form-control" id="current-password" placeholder="Password" autocomplete="current-password">
+                      </div>
+                      <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input name="passwords[new]" type="password" class="form-control" id="new-password" placeholder="Confirm password" autocomplete="new-password">
+                        <small id="passwordHelp" class="form-text text-muted invisible">
+                          Password changed successfully!
+                        </small>
+                      </div>
+                      <div class="form-group">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Change password</button>
+                    </form>
+                    <hr class="my-2">
+                    <span class="sign-switch">
+                      Pick a good password, you can do it!
+                    </span>
+                    <hr class="my-2">
+                    <span class="sign-switch">
+                      Close
+                    </span>
+
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="sign-out-action">Sign Out</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+      </header>
+
+      <main>
+        <!-- Sign-out Landing Page  -->
+        <section id="sign-out-landing-page">
+          <div class="jumbotron jumbolia d-flex flex-column align-items-center text-white bg-dark">
+            <h1 class="display-3">The Best Trailers</h1>
+            <p class="lead mb-sm-0 mb-lg-5">Book specialty trailers from local hosts</p>
+            <button class="btn btn-outline-success btn-lg temp-toggle-sign-in ">Learn more</button>
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <div class="container">
+              <div class="media">
+                <i class="align-self-start mr-3 far fa-list-alt fa-3x" alt="..."></i>
+                <div class="media-body">
+                  <h5 class="mt-0">Endless options</h5>
+                  <p>Choose from hundreds of models you won't find anywhere else. Pick it up or get it delivered where you want it.</p>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="media">
+                <i class="align-self-start mr-3 far fa-thumbs-up fa-3x" alt="..."></i>
+                <div class="media-body">
+                  <h5 class="mt-0">Free cancellation</h5>
+                  <p>Cancel for free up to 24 hours before your trip starts. Because life happens and it helps to be flexible when it does.</p>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="media">
+                <i class="align-self-start mr-3 fas fa-headset fa-3x" alt="..."></i>
+                <div class="media-body">
+                  <h5 class="mt-0">24/7 customer support</h5>
+                  <p>Rest easy knowing that everyone in the Trailer Share community is screened, and 24/7 customer support and roadside assistance are just a click away.</p>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg align-self-center temp-toggle-sign-in">Book now</button>
+          </div>
+          <div class="container my-4">
+            <div class="row" id="landing-trailer-list">
+
+            </div>
+          </div>
+          <div class="jumbotron d-flex flex-column mb-0">
+            <h1 class="display-4">The trailer that pays for itself</h1>
+            <p class="lead">Make a dent in your monthly trailer payments — on average, Trailer Share hosts can cover their payments by sharing their trailers just 3 days per month.</p>
+            <hr class="my-4">
+            <button class="btn btn-outline-dark align-self-center temp-toggle-sign-in">List your trailer</button>
+          </div>
+
+        </section>
+        <!-- Signed-in Landing Page -->
+        <section class="container-fluid d-none" id="signed-in-flight-deck-page">
+          <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3 px-sm-1 px-md-0">
+              <nav class="navbar navbar-dark bg-dark search-main-trailer-list" id="signed-in-nav-search">
+                <a class="navbar-brand accordion-label no-cursor" href="#">Search Trailers</a>
+                <button id="navbarTogglerSearchButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerSearch" aria-controls="navbarTogglerSearch" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fas fa-search"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerSearch">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                      <select class="custom-select custom-select mb-3" id="selectSearchHitchType">
+                        <option selected value="">Hitch Type</option>
+                        <option>Class 1</option>
+                        <option>Class 2</option>
+                        <option>Class 3</option>
+                        <option>Class 4</option>
+                        <option>Class 5</option>
+                        <option>5th Wheel</option>
+                        <option>Gooseneck</option>
+                        <option>Pintle</option>
+                        <option>Enclosed</option>
+                      </select>
+                    </li>
+                    <li class="nav-item">
+                      <select class="custom-select custom-select mb-3" id="selectSearchTrailerType">
+                        <option selected value="">Trailer Type</option>
+                        <option>Single Car</option>
+                        <option>Multi Car</option>
+                        <option>Flat Bed</option>
+                        <option>Open</option>
+                        <option>Enclosed</option>
+                      </select>
+                    </li>
+                    <li class="nav-item">
+                      <select class="custom-select custom-select mb-3" id="selectSearchPrice">
+                        <option selected value="0">Price</option>
+                        <option value="75">Under $75 / day</option>
+                        <option value="150">Under $150 / day</option>
+                        <option value="300">Under $300 / day</option>
+                      </select>
+                    </li>
+                    <li>
+                      <a href="#" class="btn btn-outline-success my-2 my-sm-0" id="searchButton">Search</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+            <!-- flight deck trailer list -->
+            <div class="col-sm-12 col-md-5 px-sm-1 px-md-0 flight-deck-m-t-l-c border border-dark">
+              <div class="row" id="flight-deck-main-trailer-list">
+
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 px-sm-1 px-md-0">
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header bg-dark" id="user-trailer-list-heading">
+                    <h2 class="mb-0">
+                      <button id="user-trailer-button" class="btn btn-link btn-lg text-decoration-none text-white accordion-label" type="button" data-toggle="collapse" data-target="#user-trailer-list" aria-expanded="false" aria-controls="user-trailer-list">
+                        Your Trailers
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="user-trailer-list" class="collapse user-trailer-list" aria-labelledby="user-trailer-list-heading" data-parent="#accordionExample">
+                    <div class="card-body px-0">
+                      <div class="container-fluid">
+                        <ul class="list-unstyled" id="user-trailer-list-body">
+
+                        </ul>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header bg-dark" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link btn-lg collapsed text-decoration-none text-white accordion-label" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Reservations
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse user-trailer-list" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <div id="reservedTrailersHere">
+                        You have no reservations.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header bg-dark" id="headingThree">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link btn-lg collapsed text-decoration-none text-white accordion-label" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Saved Trailers
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseThree" class="collapse user-trailer-list" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <div id="savedTrailersHere">
+                        You have no saved trailers.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="">
+
+        </section>
+      </main>
+
+      <footer>
+        <nav class="navbar navbar-dark bg-dark">
+          <div class="container">
+            <div class="row col-12">
+              <ul class="nav flex-column col-sm-12 col-md-6 col-lg-4">
+                <li class="nav-item">
+                  <a class="nav-link disabled font-weight-bolder text-white" href="#" aria-disabled="true">Cities</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Boston</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">LA</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Seatle</a>
+                </li>
+              </ul>
+              <ul class="nav flex-column col-sm-12 col-md-6 col-lg-4">
+                <li class="nav-item">
+                  <a class="nav-link disabled font-weight-bolder text-white" href="#" aria-disabled="true">Careers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Support</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Terms</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Connect</a>
+                </li>
+              </ul>
+              <ul class="nav flex-column col-sm-12 col-md-6 col-lg-4">
+                <li class="nav-item">
+                  <a class="nav-link disabled font-weight-bolder text-white" href="#" aria-disabled="true">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Future cities</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Meet the team</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" aria-disabled="true">Space Travel</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </footer>
+    </body>
+</html>
